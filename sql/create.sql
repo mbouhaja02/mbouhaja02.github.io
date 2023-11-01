@@ -1,8 +1,5 @@
 -- ============================================================================================
---  Nom de la base :    COUVOITURAGE_COMPUS
---
---
---  
+--      |   |   |   |   Nom de la base :    COUVOITURAGE_COMPUS
 -- ============================================================================================
 
 create DATABASE COUVOITURAGE_COMPUS;
@@ -12,6 +9,8 @@ create DATABASE COUVOITURAGE_COMPUS;
 --  |   |   |   |   |   |   CREATION DES TABLES DANS LA BASE DE DONNEES
 --  
 -- ============================================================================================
+
+
 
 -- ============================================================================================
 --  
@@ -41,7 +40,7 @@ CREATE TABLE COUVOITURAGE_COMPUS.VOITURE(
     NBR_PASSAGER INT,
     PRIMARY KEY (NUM_IMMATRICULE),
     FOREIGN KEY (NUM_ETUDIANT) REFERENCES ETUDIANT(NUM_ETUDIANT) ON DELETE CASCADE
-)
+);
 
 -- ============================================================================================
 --  
@@ -60,7 +59,7 @@ CREATE TABLE COUVOITURAGE_COMPUS.TRAJET(
     NBR_ESCALES INT NOT NULL
     PRIMARY KEY (NUM_TRAJET),
     FOREIGN KEY (NUM_IMMATRICULE) REFERENCES VOITURE(NUM_IMMATRICULE) ON DELETE CASCADE
-)
+);
 
 -- ============================================================================================
 --  
@@ -78,7 +77,7 @@ CREATE TABLE COUVOITURAGE_COMPUS.ESCALE(
     VALIDATION_ESCALE VARCHAR(100) NOT NULL,
     PRIMARY KEY (NUM_TRAJET),
     FOREIGN KEY (NUM_TRAJET) REFERENCES TRAJET(NUM_TRAJET) ON DELETE CASCADE
-)
+);
 
 
 -- ============================================================================================
