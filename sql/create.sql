@@ -1,8 +1,8 @@
 -- ============================================================================================
---      |   |   |   |   Nom de la base :    COUVOITURAGE_COMPUS
+--      |   |   |   |   Nom de la base :    COVOITURAGE_COMPUS
 -- ============================================================================================
 
-create DATABASE COUVOITURAGE_COMPUS;
+create DATABASE COVOITURAGE_COMPUS;
 
 -- ============================================================================================
 --  
@@ -18,7 +18,7 @@ create DATABASE COUVOITURAGE_COMPUS;
 --  
 -- ============================================================================================
 
-CREATE TABLE COUVOITURAGE_COMPUS.ETUDIANT(
+CREATE TABLE COVOITURAGE_COMPUS.ETUDIANT(
     NUM_ETUDIANT INT NOT NULL,
     PRENOM VARCHAR(100) NOT NULL,
     NOM VARCHAR(100) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE COUVOITURAGE_COMPUS.ETUDIANT(
 --  
 -- ============================================================================================
 
-CREATE TABLE COUVOITURAGE_COMPUS.VOITURE(
+CREATE TABLE COVOITURAGE_COMPUS.VOITURE(
     NUM_IMMATRICULE INT,
     NUM_ETUDIANT INT NOT NULL,
     TYPE VARCHAR(100) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE COUVOITURAGE_COMPUS.VOITURE(
 -- ============================================================================================
 
 
-CREATE TABLE COUVOITURAGE_COMPUS.TRAJET(
+CREATE TABLE COVOITURAGE_COMPUS.TRAJET(
     NUM_TRAJET INT NOT NULL,
     NUM_IMMATRICULE INT NOT NULL,
     DATE_DEPART DATETIME NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE COUVOITURAGE_COMPUS.TRAJET(
 -- ============================================================================================
 
 
-CREATE TABLE COUVOITURAGE_COMPUS.ESCALE(
+CREATE TABLE COVOITURAGE_COMPUS.ESCALE(
     NUM_ESCALE INT NOT NULL,
     NUM_TRAJET INT NOT NULL,
     ADRESSE VARCHAR(100) NOT NULL,
@@ -88,7 +88,7 @@ CREATE TABLE COUVOITURAGE_COMPUS.ESCALE(
 
 
 
-CREATE TABLE COUVOITURAGE_COMPUS.USERS (
+CREATE TABLE COVOITURAGE_COMPUS.USERS (
     ID INT AUTO_INCREMENT,
     USER_NAME VARCHAR(100),
     PASSWORD VARCHAR(100),
