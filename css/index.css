@@ -1,0 +1,8 @@
+/* Réinitialisation de la mise en page et styles de base */
+body {
+    background-image: url('background.png'); /* Remplacez 'votre-image.jpg' par le chemin relatif vers votre image de fond */
+    background-size: cover; /* Pour que l'image de fond couvre toute la zone visible du navigateur */
+    background-repeat: no-repeat; /* Pour empêcher la répétition de l'image de fond */
+    background-attachment: fixed; /* Pour maintenir l'image de fond fixe lorsque l'utilisateur fait défiler la page */
+    background-position: center center; /* Pour centrer l'image horizontalement et verticalement */
+}

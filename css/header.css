@@ -1,0 +1,120 @@
+header {
+    color: #fff;
+    padding: 20px 0; /* Augmentation de la marge interne pour agrandir le header */
+    overflow: auto; /* Pour contenir les éléments flottants dans le header */
+   /* text-align: center; /* Pour centrer horizontalement les éléments */
+}
+
+/* Styles pour le menu */
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Pour centrer horizontalement les éléments de la liste */
+}
+
+/* Dans votre fichier style.css */
+/* Styles pour le logo */
+/* Styles for the logo */
+.header .logo {
+    float: left; /* To align the logo to the left */
+    margin-right: 20px; /* Margin to the right of the logo to separate it from the buttons */
+	
+}
+
+.header .centered {
+	float: left;
+    display: flex;
+    justify-content: space-between; /* Pour aligner le logo à gauche et les boutons à droite */
+    align-items: center; /* Pour aligner verticalement le contenu du header */
+}
+
+
+/* Additional styling for the logo */
+.logo img {
+    max-width: 150px; /* Réduisez la largeur maximale du logo à 100 pixels ou une taille appropriée */
+    height: auto; /* Laissez la hauteur ajustée automatiquement pour conserver les proportions */
+    display: block;
+	
+}
+
+/* Styles pour le menu */
+.header #menu{
+	float : left;
+	width: 20%;
+	min-height:355px;
+	margin-left: 3px;
+	color:#222222;
+	font-size:15px;
+}
+
+.header .menu li {
+    display: inline;
+    margin-right: 10px; /* Espace entre les boutons */
+}
+
+.header .menu a {
+    text-decoration: none;
+    color: #333; /* Couleur du texte des boutons */
+    font-weight: bold;
+}
+
+/* Animation sur les boutons */
+.header .menu a:hover {
+    color: #007BFF; /* Couleur au survol */
+    transition: color 0.3s; /* Animation de transition de la couleur */
+}
+
+
+/* Styles pour les boutons du menu */
+.menu a button {
+    width: 250px; /* Réduisez la largeur des boutons à 100 pixels ou une taille appropriée */
+    height: 50px;
+    font-size: 16px;
+    background-color: rgb(68, 0, 255);
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+
+
+.menu a button:hover {
+    background-color: #ffffff; /* Nouvelle couleur de fond au survol */
+}
+
+
+/* Ajout de styles pour effacer les flottants après le logo et les boutons */
+.clear {
+    clear: both;
+}
+
+.header.centered_welcom {
+    display: flex;
+    justify-content: space-between; /* Pour aligner le logo à gauche et les boutons à droite */
+    align-items: center; /* Pour aligner verticalement le contenu du header */
+}
+
+
+/* Styles pour la section d'accueil */
+.welcome-section {
+    color: #df1a1a;
+    text-align: center;
+    padding: 50px 0;
+}
+
+/* Styles pour le texte d'accueil */
+.welcome-text {
+    font-size: 24px;
+    animation: fadeIn 3s ease-in;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
