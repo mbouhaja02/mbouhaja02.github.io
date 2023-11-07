@@ -19,7 +19,7 @@
                 <a href="contact.php"> <button>Contact</button></a>
 
                 <a href="index.php"> <button>Accueil</button></a>
-                <a href="contact.php"> <button>Contact</button></a>
+                <a href="login.php"> <button>Contact</button></a>
             </ul>
             
         </nav>
