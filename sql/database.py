@@ -48,7 +48,7 @@ def generate_trajet_data(num_trajets, vehicle_ids):
     trajet_data = []
     for i in range(num_trajets):
         trajet_id = i + 1
-        vehicle_id_u = random.choice([MATRICULE[0] for MATRICULE in vehicle_ids])
+        vehicle_id = random.choice([MATRICULE[0] for MATRICULE in vehicle_ids])
         start_date = datetime.datetime(2023, 1, 1)
         end_date = datetime.datetime(2023, 12, 31)
         date_depart = generate_random_datetime(start_date, end_date)
@@ -60,11 +60,10 @@ def generate_trajet_data(num_trajets, vehicle_ids):
         prix_kilometrage = random.randint(10, 100)
         distance_total = random.randint(50, 500)
         duree_estime = random.randint(30, 360)
-        trajet_data.append((trajet_id, vehicle_id_u, date_depart, date_arrivee, ville_depart, adresse_arrivee, code_postal, nbr_escales, prix_kilometrage, distance_total, duree_estime))
+        trajet_data.append((trajet_id, vehicle_id, date_depart, date_arrivee, ville_depart, adresse_arrivee, code_postal, nbr_escales, prix_kilometrage, distance_total, duree_estime))
     return trajet_data
 
-DATA_TRAJET = generate_trajet_data(5, DATA_VOITURE)
-print(DATA_TRAJET)
+print(generate_trajet_data(5, DATA_VOITURE))
 
 ####################################      DATA ESCALE    ####################################
 
@@ -79,9 +78,9 @@ print(DATA_TRAJET)
 def generate_evaluation_data(num_evaluations, student_ids, trajet_ids):
     evaluation_data = []
     for i in range(num_evaluations):
-        student_evaluator_id = random.choice(student_ids)
-        student_evaluated_id = random.choice(student_ids)
-        trajet_id = random.choice(trajet_ids)
+        student_evaluator_id = random.choice([l[0] for l in student_ids])
+        student_evaluated_id = random.choice([l[0] for l in student_ids])
+        trajet_id = random.choice([l[0] for l in trajet_ids])
         note = random.randint(1, 5)
         evaluation_data.append((student_evaluated_id, trajet_id, student_evaluator_id, note))
     return evaluation_data
