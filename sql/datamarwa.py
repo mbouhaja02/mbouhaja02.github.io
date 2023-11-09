@@ -1,6 +1,9 @@
 import random
 import datetime
 
+Tables = ['ETUDIANT', 'VOITURE', 'CONDUCTEUR', 'PASSAGER', 'RESERVATION', 'EVALUATION', 'TRAJET', 'ESCALE', 'PROPOSITION']
+
+
 ####################################      DATA VOITURE    ####################################
 
 TYPE_VOITURE=['BMW','DACIA','MERCEDES','PEUGEOT','CITROEIN','ALPHA-ROMEO','FIAT',"RENAULT","FORD"]
@@ -8,24 +11,10 @@ COULEUR= ['YELLOW', 'BLACK', 'WHITE', 'BLUE']
 NBR_PASSAGER = ['4', '5', '3']
 ETAT=['BON','MOYEN','MAUVAIS']
 
-def voiture():
-    k=0
-    L=[]
-    for i in range(2):
-        for j in range(2):
-            L.append((str(200200+k), TYPE_VOITURE[random.randint(0, 8)],ETAT[random.randint(0, 2)], COULEUR[random.randint(0, 3)], NBR_PASSAGER[random.randint(0, 2)]))
-            k+=1
-
-    return L
-
-DATA_VOITURE = voiture()
-
-
-####################################      DATA ETUDIANT    ####################################
-
 NOM = ['SMITH', 'SNOW', 'TRIBIANI', 'GELLER', 'GREEN']
 PRENOM = ['Chandler', 'Joey', 'Rachel', 'Monica', 'Ross']
 
+####################################      DATA ETUDIANT   ####################################
 
 def data_etudiant():
     L=[]
@@ -34,6 +23,19 @@ def data_etudiant():
         for prenom in PRENOM:
             L.append((num, nom, prenom))
             num += 1
+    return L
+
+####################################      DATA VOITURE    ####################################
+
+def data_voiture():
+    k=0
+    L=[]
+    conducteur = [num[0] for num in data_etudiant()]
+    for i in range(2):
+        for j in range(2):
+            L.append((str(200200+k), conducteur[k], TYPE_VOITURE[random.randint(0, 8)], COULEUR[random.randint(0, 3)],ETAT[random.randint(0, 2)], NBR_PASSAGER[random.randint(0, 2)]))
+            k+=1
+
     return L
 
 ####################################      DATA TRAJET    ####################################
@@ -63,7 +65,7 @@ def generate_trajet_data(num_trajets, vehicle_ids):
         trajet_data.append((trajet_id, vehicle_id, date_depart, date_arrivee, ville_depart, adresse_arrivee, code_postal, nbr_escales, prix_kilometrage, distance_total, duree_estime))
     return trajet_data
 
-print(generate_trajet_data(5, DATA_VOITURE))
+print(generate_trajet_data(5, data_voiture()))
 
 ####################################      DATA ESCALE    ####################################
 
@@ -109,31 +111,21 @@ def generate_reservation_data(num_reservations, trajet_ids, student_ids):
 ##################################################################################################
 
 
-
-# Define your sample data for each table
-sample_data = {
-    'ETUDIANT': data_etudiant
-}
-
-# # Read the create.sql file to extract table names and column names
-# with open('create.sql', 'r') as create_sql_file:
-#     create_sql = create_sql_file.read()
-
-# # Split the SQL script into individual statements
-# sql_statements = create_sql.split(';')
-
-# # Create the insert.sql file to write the INSERT statements
-# with open('insert.sql', 'w') as insert_sql_file:
-#     for statement in sql_statements:
-#         statement = statement.strip()
-#         if statement.startswith('CREATE TABLE'):
-#             table_name = statement.split(' ')[2].strip(')')
-#             if table_name in sample_data:
-#                 print(table_name)
-#                 columns = [column[0] for column in sample_data[table_name]]
-#                 insert_sql_file.write(f"INSERT INTO {table_name} ({', '.join(columns)}) VALUES\n")
-#                 values = [', '.join(map(str, row)) for row in sample_data[table_name]]
-#                 insert_sql_file.write("    {};\n\n".format(',\n    '.join(['(' + value + ')' for value in values])))
+####################################     CHOIX DE LA TABLE    ####################################
 
 
-# print('Data insertion script generated in insert.sql.')
+def which_table(table):
+    if table=="ETUDIANT":
+        return ", ". join(f"{element}" for element in data_etudiant())
+    elif table=="VOITURE":
+        return ", ". join(f"{element}" for element in data_voiture())
+
+
+##################    INSERTION DE DONNES DANS LE FICHIER INSERT.SQL    ##########################
+    
+
+# with open('insert.sql', 'w') as file:
+#     for table in Tables:
+#         file.write("INSERT INTO " + table +" \n VALUES ")
+#         file.write(which_table(table))
+#         file.write(";\n") 

@@ -1,0 +1,6 @@
+INSERT INTO ETUDIANT 
+ VALUES (10000, 'SMITH', 'Chandler'), (10001, 'SMITH', 'Joey'), (10002, 'SMITH', 'Rachel'), (10003, 'SMITH', 'Monica'), (10004, 'SMITH', 'Ross'), (10005, 'SNOW', 'Chandler'), (10006, 'SNOW', 'Joey'), (10007, 'SNOW', 'Rachel'), (10008, 'SNOW', 'Monica'), (10009, 'SNOW', 'Ross'), (10010, 'TRIBIANI', 'Chandler'), (10011, 'TRIBIANI', 'Joey'), (10012, 'TRIBIANI', 'Rachel'), (10013, 'TRIBIANI', 'Monica'), (10014, 'TRIBIANI', 'Ross'), (10015, 'GELLER', 'Chandler'), (10016, 'GELLER', 'Joey'), (10017, 'GELLER', 'Rachel'), (10018, 'GELLER', 'Monica'), (10019, 'GELLER', 'Ross'), (10020, 'GREEN', 'Chandler'), (10021, 'GREEN', 'Joey'), (10022, 'GREEN', 'Rachel'), (10023, 'GREEN', 'Monica'), (10024, 'GREEN', 'Ross');
+INSERT INTO VOITURE 
+ VALUES ('200200', 10000, 'RENAULT', 'BLUE', 'MOYEN', '4'), ('200201', 10001, 'PEUGEOT', 'BLUE', 'BON', '5'), ('200202', 10002, 'FIAT', 'WHITE', 'MOYEN', '3'), ('200203', 10003, 'ALPHA-ROMEO', 'BLUE', 'BON', '3');
+INSERT INTO CONDUCTEUR 
+ VALUES 
