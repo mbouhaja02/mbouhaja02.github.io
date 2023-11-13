@@ -13,6 +13,8 @@
     <h1>Bienvenue sur notre site de covoiturage</h1>
     <p>Trouvez des covoitureurs pour vos trajets.</p>
 
+    <!-- <img src="path_to_your_image.jpg" alt="Description of the image"> -->
+
     <?php include('php/footer.php'); ?>
 </body>
 </html>

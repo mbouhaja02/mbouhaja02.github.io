@@ -94,6 +94,7 @@
                 <li><a href="../php/contact.php">Contact</a></li>
                 <li><a href="../php/test.php">Tests</a></li>
                 <li><a href="../php/login.php">Login </a></li>
+                <li><a href="../php/select.php">select </a></li>
             </ul>
         </nav>
     </header>
