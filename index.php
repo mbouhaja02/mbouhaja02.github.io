@@ -9,7 +9,6 @@
 <body>
     <?php include('php/header.php'); ?>
 
-    <?php include_once('php/login.php'); ?>
 
     <h1>Bienvenue sur notre site de covoiturage</h1>
     <p>Trouvez des covoitureurs pour vos trajets.</p>

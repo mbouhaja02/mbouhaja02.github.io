@@ -1,8 +1,24 @@
-/* Réinitialisation de la mise en page et styles de base */
 body {
-    background-image: url('background.png'); /* Remplacez 'votre-image.jpg' par le chemin relatif vers votre image de fond */
-    background-size: cover; /* Pour que l'image de fond couvre toute la zone visible du navigateur */
-    background-repeat: no-repeat; /* Pour empêcher la répétition de l'image de fond */
-    background-attachment: fixed; /* Pour maintenir l'image de fond fixe lorsque l'utilisateur fait défiler la page */
-    background-position: center center; /* Pour centrer l'image horizontalement et verticalement */
+    background: linear-gradient(to right, #76b852, #8DC26F);
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('path_to_your_background_image.jpg') no-repeat center center fixed; 
+    background-size: cover;
+}
+
+h1 {
+    color: #004d99; /* Or any other color that fits your design */
+    text-align: center;
+    margin-top: 50px; /* Adjust as needed */
+}
+
+p {
+    text-align: center;
+    color: #666; /* Or any other color that fits your design */
+    margin-top: 20px;
 }
