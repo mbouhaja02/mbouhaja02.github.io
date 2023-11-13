@@ -1,15 +1,12 @@
+
+
 <?php
-$servername = "localhost";
-$username = "user";
-$password = "death@**@";
-$dbname = "mydata";
+$dbname = "../sql/data.db";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $conn = new PDO("sqlite:$dbname");
+    echo "Connexion réussie à SQLite";
+} catch(PDOException $e) {
+    echo "Erreur de connexion : " . $e->getMessage();
 }
 ?>
-

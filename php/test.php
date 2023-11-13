@@ -47,6 +47,8 @@
     </style>
 </head>
 <body>
+    <?php include('../php/connect.php'); ?>
+
     <div id="container">
         <h2>SQL Query Tester</h2>
         <form method="post" action="">
