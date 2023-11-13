@@ -100,6 +100,6 @@
     </header>
     <!-- <section class="welcome-section">
         <h1 class="welcome-text">Bienvenue sur notre service de covoiturage</h1>
-    </section> -->>
+    </section> -->
 </body>
 </html>

@@ -60,6 +60,7 @@
     </style>
 </head>
 <body>
+<?php include('../php/header.php'); ?>
 
 <div class="contact-container">
     <h1 class="contact-heading">Contactez-nous</h1>
@@ -78,6 +79,7 @@
         </div>
     </form>
 </div>
+    <?php include('../php/footer.php'); ?>
 
 </body>
 </html>

@@ -42,5 +42,6 @@
         <p style="text-align:center; color:Black; position: absolute; width: 100%; bottom: 10%; font-size: 20px;">CONDUCTEUR</p>
         </div>
     </div>
+    <?php include('../php/footer.php'); ?>
 </body>
 </html>
