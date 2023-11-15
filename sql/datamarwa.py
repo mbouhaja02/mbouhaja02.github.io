@@ -121,7 +121,7 @@ def data_proposition(num_propositions, escale_ids, passager_ids):
     proposition_data = []
     for i in range(num_propositions):
         num_escale = random.choice([l[0] for l in escale_ids])
-        num_passager = random.choice([l[0] for l in passager_ids])
+        num_passager = random.choice(passager_ids)
         proposition_data.append((num_escale, num_passager))
     return proposition_data
 
@@ -145,7 +145,7 @@ def data_reservation(num_reservations, trajet_ids, student_ids):
     reservation_data = []
     for i in range(num_reservations):
         trajet_id = random.choice([l[0] for l in trajet_ids])
-        student_id = random.choice([l[0] for l in student_ids])
+        student_id = random.choice(student_ids)
         validation_reservation = random.choice(['TRUE', 'FALSE'])
         reservation_data.append((trajet_id, student_id, validation_reservation))
     return reservation_data
@@ -177,9 +177,9 @@ def which_table(table):
     elif table=="ESCALE":
         return ", ". join(f"{element}" for element in data_escale(5, data_trajet(5, data_voiture())))
     elif table=="PROPOSITION":
-        return ", ". join(f"{element}" for element in data_proposition(5, data_escale(5, data_trajet(5, data_voiture())), data_etudiant()))
+        return ", ". join(f"{element}" for element in data_proposition(5, data_escale(5, data_trajet(5, data_voiture())), data_passager()))
     elif table=="RESERVATION":
-        return ", ". join(f"{element}" for element in data_reservation(5, data_trajet(5, data_voiture()), data_etudiant()))
+        return ", ". join(f"{element}" for element in data_reservation(5, data_trajet(5, data_voiture()), data_passager()))
     elif table=="EVALUATION":
         return ", ". join(f"{element}" for element in data_evaluation(5, data_etudiant(), data_trajet(5, data_voiture())))
     
