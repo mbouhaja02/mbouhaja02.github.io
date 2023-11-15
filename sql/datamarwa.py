@@ -30,29 +30,20 @@ def data_etudiant():
 def data_conducteur():
     return [ele[0] for ele in random.sample(data_etudiant(), int(0.2 * len(data_etudiant())))]
 
-
+C = data_conducteur()
 
 ####################################      DATA PASSAGER   ####################################
 
 def data_passager():
-    P = []
-    C = data_conducteur() 
-    E = data_etudiant()    
-
-    for etudiant in E:
-        if etudiant[0] not in C:
-            P.append(etudiant[0])
-
-    return list(set(P))
-
-
+    E = [etu[0] for etu in data_etudiant()]    
+    return [e for e in E if e not in C]
 
 ####################################      DATA VOITURE    ####################################
 
 def data_voiture():
     k=0
     L=[]
-    conducteur = data_conducteur()
+    conducteur = C
     for i in range(int(len(conducteur)/2)):
         for j in range(int(len(conducteur)/2)):
             L.append((str(200200+k), conducteur[k], TYPE_VOITURE[random.randint(0, 8)], COULEUR[random.randint(0, 3)],ETAT[random.randint(0, 2)], NBR_PASSAGER[random.randint(0, 2)]))
@@ -60,7 +51,6 @@ def data_voiture():
 
     return L
 
-print(data_voiture())
 
 ####################################      DATA TRAJET    ####################################
 
@@ -179,7 +169,7 @@ def which_table(table):
     elif table=="PASSAGER":
         return ", ". join(f"({element})" for element in data_passager())
     elif table=="CONDUCTEUR":
-        return ", ". join(f"({element})" for element in data_conducteur())
+        return ", ". join(f"({element})" for element in C)
     elif table=="VOITURE":
         return ", ". join(f"{element}" for element in data_voiture())
     elif table=="TRAJET":
