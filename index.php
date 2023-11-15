@@ -72,6 +72,7 @@ header, footer {
     </style>
 
 <body>
+
     <?php include('php/header.php'); ?>
 
     <div class="welcome-section">
@@ -85,6 +86,47 @@ header, footer {
         <p>Covoiturage Compus est une initiative pour faciliter les déplacements des étudiants en proposant une solution simple, </p>
         <p>économique et écologique. Que vous soyez conducteur ou passager, trouvez votre covoiturage en quelques clics et partagez bien plus qu'un trajet !</p>
     </div>
+
+    <h2>Exemple de requ&ecirc;te php PostgreSQL</h2>
+<?php
+include "connect_pg.php"; /* Le fichier connect_pg.php contient les identifiants de connexion */
+/* Si l'exécution est réussie... */
+$res = pg_query_params($connection,  'SELECT * FROM ACTEUR WHERE nom_acteur=$1', array('GARCIA'));
+
+
+if ($res) {
+    $num_fields = pg_num_fields($res); // Nombre de colonnes
+    ?>
+    <table>
+        <tr>
+            <?php
+            echo "<table border=120>\n";
+            // Afficher les en-têtes des colonnes avec le nom et le type
+            for ($i = 0; $i < $num_fields; $i++) {
+                $field_name = pg_field_name($res, $i); // Nom de la colonne
+                $field_type = pg_field_type($res, $i); // Type de la colonne
+                echo "<th>{$field_name} ({$field_type})</th>";
+            }
+            ?>
+        </tr>
+        <?php
+        while ($row = pg_fetch_assoc($res)) {
+            echo "<tr>";
+            // Afficher les données de chaque colonne
+            for ($i = 0; $i < $num_fields; $i++) {
+                $field_name = pg_field_name($res, $i);
+                echo "<td>{$row[$field_name]}</td>";
+            }
+            echo "</tr>";
+        }
+        // Libération de l'objet requête
+        pg_free_result($res);
+    }
+    echo "</table>\n";
+    // Fermeture de la connexion avec la base
+    pg_close($connection);
+    ?>
+    </table>
 
     <!-- Optional: Add an image to enhance the presentation -->
     <!-- <img src="path_to_your_image.jpg" alt="Etudiants partageant un covoiturage"> -->
