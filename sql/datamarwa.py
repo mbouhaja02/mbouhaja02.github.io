@@ -53,8 +53,8 @@ def data_voiture():
     k=0
     L=[]
     conducteur = data_conducteur()
-    for i in range(2):
-        for j in range(2):
+    for i in range(int(len(conducteur)/2)):
+        for j in range(int(len(conducteur)/2)):
             L.append((str(200200+k), conducteur[k], TYPE_VOITURE[random.randint(0, 8)], COULEUR[random.randint(0, 3)],ETAT[random.randint(0, 2)], NBR_PASSAGER[random.randint(0, 2)]))
             k+=1
 
