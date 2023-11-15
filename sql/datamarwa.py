@@ -175,9 +175,9 @@ def which_table(table):
     if table=="ETUDIANT":
         return ", ". join(f"{element}" for element in data_etudiant())
     elif table=="PASSAGER":
-        return ", ". join(f"{element}" for element in data_passager())
+        return ", ". join(f"({element})" for element in data_passager())
     elif table=="CONDUCTEUR":
-        return ", ". join(f"{element}" for element in data_conducteur())
+        return ", ". join(f"({element})" for element in data_conducteur())
     elif table=="VOITURE":
         return ", ". join(f"{element}" for element in data_voiture())
     elif table=="TRAJET":
