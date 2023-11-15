@@ -1,7 +1,7 @@
 import random
 import datetime
 
-Tables = ['ETUDIANT', 'VOITURE', 'RESERVATION', 'EVALUATION', 'TRAJET', 'ESCALE', 'PROPOSITION']
+Tables = ['ETUDIANT', 'CONDUCTEUR', 'PASSAGER','VOITURE', 'TRAJET', 'ESCALE', 'PROPOSITION', 'RESERVATION', 'EVALUATION']
 
 
 ####################################      DATA VOITURE    ####################################
@@ -24,6 +24,28 @@ def data_etudiant():
             L.append((num, nom, prenom))
             num += 1
     return L
+
+####################################      DATA CONDUCTEUR   ####################################
+
+def data_conducteur():
+    return [ele[0] for ele in random.sample(data_etudiant(), int(0.2 * len(data_etudiant())))]
+
+
+
+####################################      DATA PASSAGER   ####################################
+
+def data_passager():
+    P = []
+    C = data_conducteur() 
+    E = data_etudiant()    
+
+    for etudiant in E:
+        if etudiant[0] not in C:
+            P.append(etudiant[0])
+
+    return list(set(P))
+
+
 
 ####################################      DATA VOITURE    ####################################
 
@@ -152,6 +174,10 @@ def data_reservation(num_reservations, trajet_ids, student_ids):
 def which_table(table):
     if table=="ETUDIANT":
         return ", ". join(f"{element}" for element in data_etudiant())
+    elif table=="PASSAGER":
+        return ", ". join(f"{element}" for element in data_passager())
+    elif table=="CONDUCTEUR":
+        return ", ". join(f"{element}" for element in data_conducteur())
     elif table=="VOITURE":
         return ", ". join(f"{element}" for element in data_voiture())
     elif table=="TRAJET":
@@ -160,15 +186,11 @@ def which_table(table):
         return ", ". join(f"{element}" for element in data_escale(5, data_trajet(5, data_voiture())))
     elif table=="PROPOSITION":
         return ", ". join(f"{element}" for element in data_proposition(5, data_escale(5, data_trajet(5, data_voiture())), data_etudiant()))
-    elif table=="EVALUATION":
-        return ", ". join(f"{element}" for element in data_evaluation(5, data_etudiant(), data_trajet(5, data_voiture())))
-    # elif table=="PASSAGER":
-    #     return ", ". join(f"{element}" for element in data_passager())
-    # elif table=="CONDUCTEUR":
-    #     return ", ". join(f"{element}" for element in data_conducteur())
     elif table=="RESERVATION":
         return ", ". join(f"{element}" for element in data_reservation(5, data_trajet(5, data_voiture()), data_etudiant()))
-
+    elif table=="EVALUATION":
+        return ", ". join(f"{element}" for element in data_evaluation(5, data_etudiant(), data_trajet(5, data_voiture())))
+    
 # def which_table(table):
 #     data_functions = {
 #         "ETUDIANT": data_etudiant,
