@@ -29,6 +29,7 @@
             background: white; /* Fond blanc pour la zone de contenu */
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère pour le conteneur */
+            text-align: center;
         }
 
         table {

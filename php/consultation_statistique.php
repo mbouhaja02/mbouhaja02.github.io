@@ -78,6 +78,7 @@ h2 {
   border-radius: 15px; /* Bordures arrondies */
   font-size: 0.5rem;
   height: auto;
+  text-align: center;
 }
 
 
