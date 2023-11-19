@@ -28,7 +28,7 @@ WHERE NUM_ETUDIANT IN (SELECT NUM_ETUDIANT FROM ETUDIANT
 --  |  La liste des véhicules disponibles pour un jour donné pour une ville donnée
 -- ============================================================================================
 SELECT VOITURE.*
-FROM VOITURE v
+FROM VOITURE v 
 JOIN TRAJET t ON v.NUM_IMMATRICULE = t.NUM_IMMATRICULE
 JOIN ESCALE e ON e.NUM_TRAJET = t.NUM_TRAJET
 WHERE t.DATE_DEPART /*date*/ AND ville IN (t.ADRESSE_ARRIVEE, e.ADRESSE);

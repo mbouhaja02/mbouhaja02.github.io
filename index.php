@@ -7,9 +7,10 @@
         
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: #f4f4f4;
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
     margin: 0;
     padding: 0;
+    padding-top: 60px;
 }
 
 h1 {

@@ -5,10 +5,11 @@
     <title>Contact Us</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 60px;
+            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
+            color: white; /* Texte en blanc pour contraste */
             margin: 0;
-            padding: 0;
         }
         .contact-container {
             background-color: white;
