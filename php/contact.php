@@ -61,10 +61,38 @@
 </head>
 <body>
 <?php include('../php/header.php'); ?>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = strip_tags(trim($_POST["name"]));
+    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+    $message = trim($_POST["message"]);
+
+    if (empty($name) || !filter_var($email, FILTER_VALIDATE_EMAIL) || empty($message)) {
+        // Handle error here
+        echo "Invalid input!";
+    } else {
+        $to = "mohamedbouhaja106@gmail.com"; // REPLACE with your email address
+        $subject = "New contact from $name";
+        $email_content = "Name: $name\n";
+        $email_content .= "Email: $email\n\n";
+        $email_content .= "Message:\n$message\n";
+
+        $email_headers = "From: $name <$email>";
+
+        if (mail($to, $subject, $email_content, $email_headers)) {
+            // Email sent successfully
+            echo "Thank you! Your message has been sent.";
+        } else {
+            // Email failed to send
+            echo "Oops! Something went wrong, we couldn't send your message.";
+        }
+    }
+}
+?>
 
 <div class="contact-container">
     <h1 class="contact-heading">Contactez-nous</h1>
-    <form class="contact-form" action="submit_contact_form.php" method="post">
+    <form class="contact-form" action="contact.php" method="post">
         <div>
             <input type="text" id="name" name="name" placeholder="Votre nom" required>
         </div>
