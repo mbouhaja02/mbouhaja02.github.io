@@ -27,7 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Associer les valeurs et exécuter la requête
     $stmt->bind_param("iissssisiii", $num_trajet, $num_immatricule, $date_depart, $date_arrivee, $ville_depart, $adresse_arrivee, $code_postal, $nbr_escales, $prix_kilometrage, $distance_total, $duree_estime);
     if ($stmt->execute()) {
-        echo "Nouveau trajet ajouté avec succès!";
+        header("Refresh:1; url=test.php");
+        echo "Nouveau trajet ajouté avec succès! Redirection en cours...";
     } else {
         echo "Erreur: " . $stmt->error;
     }

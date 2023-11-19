@@ -128,6 +128,12 @@
     </form>
 </div>
 
+<form action="delete_trajet.php" method="post">
+    <input type="number" name="num_trajet" placeholder="Numéro du trajet" required>
+    <button type="submit">Supprimer Trajet</button>
+</form>
+
+
     <?php include('footer.php'); ?>
 
     <script>
