@@ -90,11 +90,11 @@
                 COVOITURAGE COMPUS
             </div>
             <ul class="menu">
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="../php/contact.php">Contact</a></li>
-                <li><a href="../php/test.php">Tests</a></li>
-                <li><a href="../php/login.php">Login </a></li>
-                <li><a href="../php/select.php">select </a></li>
+                <li><a href="http://localhost/free-sgbd203/index.php">Accueil</a></li>
+                <li><a href="http://localhost/free-sgbd203/php/contact.php">Contact</a></li>
+                <li><a href="http://localhost/free-sgbd203/php/test.php">Tests</a></li>
+                <li><a href="http://localhost/free-sgbd203/php/login.php">Login </a></li>
+                <li><a href="http://localhost/free-sgbd203/php/select.php">select </a></li>
             </ul>
         </nav>
     </header>
