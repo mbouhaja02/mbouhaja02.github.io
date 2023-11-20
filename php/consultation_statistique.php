@@ -79,6 +79,7 @@ h2 {
   font-size: 0.5rem;
   height: auto;
   text-align: center;
+  color: black;
 }
 
 

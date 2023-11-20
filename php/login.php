@@ -6,10 +6,7 @@
         /* General Styling */
         body {
             font-family: Arial, sans-serif;
-            background-image: url('path_to_your_carpooling_background_image.jpg'); /* Replace with the actual path to your background image */
-            background-size: cover; /* Cover the entire page */
-            background-repeat: no-repeat; /* Do not repeat the image */
-            display: flex;
+            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -63,13 +60,20 @@
             background-color: #d4edda;
             color: #155724;
         }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
     </style>
 </head>
 <body>
-    <!-- PHP logic here -->
+        
+    <?php include('header.php'); ?>
 
-    <!-- Login Form -->
     <?php if (!isset($loggedUser)): ?>
+    <div id="container">
     <form action="index.php" method="post">
         <!-- Error Message -->
         <?php if (isset($errorMessage)): ?>
@@ -94,5 +98,7 @@
             Bonjour <?php echo $loggedUser['email']; ?> et bienvenue sur le site !
         </div>
     <?php endif; ?>
+    </div>
+    <?php include('footer.php'); ?>
 </body>
 </html>

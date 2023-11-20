@@ -8,66 +8,140 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding-top: 60px;
-            background: #f4f4f4; /* Couleur de fond légère */
+            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
             margin: 0;
         }
 
         header {
             width: 100%;
             position: fixed;
-            top: 0;
             z-index: 1000;
-            background: #333; /* Couleur de fond pour le header */
+            background: #333;
             color: white;
-            padding: 10px 0;
+            padding: 20px 0;
             text-align: center;
+
         }
 
         #container {
             width: 80%;
-            margin: 20px auto;
-            background: white; /* Fond blanc pour la zone de contenu */
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère pour le conteneur */
+            margin: 100px auto;
+            background: white;
+            padding: 100px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            font-size: 0.8rem;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); /* Ombre pour la table */
+            box-shadow: 0 2px 3px rgba(0, 0, 0.1, 0);
+            text-align: center;
         }
 
         th, td {
             padding: 10px;
             text-align: left;
-            border-bottom: 1px solid #ddd; /* Ligne de séparation */
+            border-bottom: 1px solid #ddd;
         }
-        
+
+        h2{
+            text-align: center;
+            color:black;
+        }
 
         th {
-            background-color: #4CAF50; /* Couleur de fond pour l'entête */
+            background-color: #4CAF50;
             color: white;
         }
 
+    
         tr:hover {
-            background-color: #f5f5f5; /* Couleur lors du survol d'une ligne */
+            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
+
         }
 
-        button {
-            background-color: #4CAF50;
+        button, input[type=submit] {
+            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
             color: white;
             padding: 10px 20px;
             border: none;
-            border-radius: 4px; /* Bordures arrondies pour le bouton */
+            border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            margin: 10px 0;
         }
 
-        button:hover {
-            background-color: #45a049;
+
+        .addTrajetForm{
+            text-align: center;
         }
+
+        .form-section {
+            margin-bottom: 20px;
+            text-align: left;
+            text-align: center;
+        }
+
+        .form-section input {
+            width: calc(50% - 20px);
+            padding: 10px;
+            margin: 5px;
+        }
+
+        @media screen and (max-width: 600px) {
+            .form-section input {
+                width: calc(100% - 20px);
+            }
+        }
+
+        .form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.form-trajet .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.form-trajet .form-group input {
+    flex: 0 0 48%; /* Pour que deux champs soient sur la même ligne */
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-trajet .submit-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.form-trajet .submit-button:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+    .form-trajet .form-group input {
+        flex: 0 0 100%;
+    }
+}
+
+ 
     </style>
 </head>
 <body>
@@ -111,28 +185,44 @@
     </div>
     <!-- Formulaire HTML pour l'ajout d'un nouveau trajet -->
 
-    <div id="addTrajetForm">
+    <div id="addTrajetForm" class="form-container">
     <h2>Ajouter un nouveau trajet</h2>
-    <form action="insert_trajet.php" method="post">
-        <input type="text" name="num_trajet" placeholder="Numéro trajet" required>
-        <input type="text" name="num_immatricule" placeholder="Numéro Immatricule" required>
-        <input type="text" name="date_depart" placeholder="Date de départ" required>
-        <input type="text" name="date_arrivee" placeholder="Date d'arrivée" required>
-        <input type="text" name="ville_depart" placeholder="Ville de départ" required>
-        <input type="text" name="adresse_arrivee" placeholder="Adresse d'arrivée" required>
-        <input type="text" name="code_postal" placeholder="Code postal" required>
-        <input type="text" name="nbr_escales" placeholder="Nombre d'escales" required>
-        <input type="text" name="prix_kilometrage" placeholder="Prix du kilométrage" required>
-        <input type="text" name="distance_total" placeholder="Distance totale" required>
-        <input type="text" name="duree_estime" placeholder="Durée estimée" required>
-        <button type="submit">Ajouter Trajet</button>
+    <form action="insert_trajet.php" method="post" class="form-trajet">
+        <div class="form-group">
+            <input type="text" name="num_trajet" placeholder="Numéro trajet" required>
+            <input type="text" name="num_immatricule" placeholder="Numéro Immatricule" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="date_depart" placeholder="Date de départ" required>
+            <input type="text" name="date_arrivee" placeholder="Date d'arrivée" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="ville_depart" placeholder="Ville de départ" required>
+            <input type="text" name="adresse_arrivee" placeholder="Adresse d'arrivée" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="code_postal" placeholder="Code postal" required>
+            <input type="text" name="nbr_escales" placeholder="Nombre d'escales" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="prix_kilometrage" placeholder="Prix du kilométrage" required>
+            <input type="text" name="distance_total" placeholder="Distance totale" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="duree_estime" placeholder="Durée estimée" required>
+        </div>
+        <button type="submit" class="submit-button">Ajouter Trajet</button>
     </form>
 </div>
 
+
+<div class="form-section">
+<h2>Supprimer un nouveau trajet</h2>
 <form action="delete_trajet.php" method="post">
     <input type="number" name="num_trajet" placeholder="Numéro du trajet" required>
     <button type="submit">Supprimer Trajet</button>
 </form>
+        </div>
 
 
     <?php include('footer.php'); ?>
