@@ -181,7 +181,7 @@ def which_table(table):
     elif table=="RESERVATION":
         return ", ". join(f"{element}" for element in data_reservation(5, data_trajet(5, data_voiture()), data_passager()))
     elif table=="EVALUATION":
-        return ", ". join(f"{element}" for element in data_evaluation(5, data_etudiant(), data_trajet(5, data_voiture())))
+        return ", ". join(f"{element}" for element in data_evaluation(25, data_etudiant(), data_trajet(5, data_voiture())))
     
 # def which_table(table):
 #     data_functions = {

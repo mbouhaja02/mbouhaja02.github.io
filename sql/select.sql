@@ -65,7 +65,7 @@ WHERE ville IN (t.ADRESSE_ARRIVEE, e.ADRESSE) AND e.DUREE_ESTIME = duree;
 -- ============================================================================================
 --  |  Moyenne des passagers sur l’ensemble des trajets effectués
 -- ============================================================================================
-SELECT AVG(NUM_PASSAGER) AS Moyenne_Passagers
+SELECT AVG(p.NUM_PASSAGER) AS Moyenne_Passagers
 FROM PASSAGER p
 JOIN RESERVATION r ON r.NUM_PASSAGER = p.NUM_PASSAGER
 -- Inclure les escales ?
@@ -75,20 +75,26 @@ WHERE VALIDATION_RESERVATION = 'TRUE';
 -- ============================================================================================
 --  |  Moyenne des distances parcourues en covoiturage par jour
 -- ============================================================================================
-SELECT AVG(Distances_Jour) AS Moyenne_Distance_Jour
-FROM (SELECT t.DATE_DEPART SUM(TRAJET.DISTANCE_TOTAL) AS Distances_Jour
-      FROM TRAJET t
-      GROUP BY t.DATE_DEPART);
+SELECT  AVG(subquery.Distances_Jour) AS Moyenne_Distance_Jour
+FROM (
+    SELECT t.DATE_DEPART, SUM(t.DISTANCE_TOTAL) AS Distances_Jour
+    FROM TRAJET t
+    GROUP BY t.DATE_DEPART
+) AS subquery;
+
+-- ============================================================================================
+--  |  Moyenne des distances parcourues en covoiturage par jour ?????
+-- ============================================================================================
 
 
 -- ============================================================================================
 --  |  Classement des meilleurs conducteurs d’aprés les avis
 -- ============================================================================================
-SELECT c.NOM, c.PRENOM, eval.NOTE AS avis
+SELECT e.NOM, e.PRENOM, eval.NOTE AS avis
 FROM CONDUCTEUR c
 JOIN ETUDIANT e ON c.NUM_CONDUCTEUR = e.NUM_ETUDIANT
 JOIN EVALUATION eval ON eval.NUM_ETUDIANT_EVALUE = c.NUM_CONDUCTEUR
-ORDER BY eval.note;
+ORDER BY eval.note DESC;
 
 
 -- ============================================================================================

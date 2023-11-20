@@ -204,20 +204,8 @@ h2 {
     </div>
 </div>
 
+
 <h3>  Les trajets pouvant desservir une ville donnée dans un intervalle de temps </h3>
-
-
-
-<h3>  Moyenne des passagers sur l'ensemble des trajets effectués </h3>
-
-
-
-<h3> Moyenne des distances parcourues en covoiturage par jour </h3>
-
-<h3> Classement des meilleurs conducteurs d'aprés les avis </h3>
-
-
-<h3> Classement des villes selon le nombre de trajets qui les dessert </h3>
 
 
 
