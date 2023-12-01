@@ -92,9 +92,11 @@
             <ul class="menu">
                 <li><a href="http://localhost/free-sgbd203/index.php">Accueil</a></li>
                 <li><a href="http://localhost/free-sgbd203/php/contact.php">Contact</a></li>
-                <li><a href="http://localhost/free-sgbd203/php/test.php">Tests</a></li>
+                <li><a href="http://localhost/free-sgbd203/php/trajet.php">Trajets</a></li>
                 <li><a href="http://localhost/free-sgbd203/php/login.php">Login </a></li>
                 <li><a href="http://localhost/free-sgbd203/php/select.php">select </a></li>
+                <li><a href="http://localhost/free-sgbd203/php/passager.php">Passager </a></li>
+                <li><a href="http://localhost/free-sgbd203/php/conducteur.php">Conducteur </a></li>
                 <li><a href="http://localhost/free-sgbd203/php/statistiques.php">Statistiques </a></li>
                 <li><a href="http://localhost/free-sgbd203/php/consultation.php">Consultation </a></li>
 
