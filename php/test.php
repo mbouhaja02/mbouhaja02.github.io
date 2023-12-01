@@ -225,7 +225,6 @@
         </div>
 
 
-    <?php include('footer.php'); ?>
 
     <script>
         document.getElementById('showTableBtn').addEventListener('click', function() {
