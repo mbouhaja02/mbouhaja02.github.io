@@ -2,17 +2,27 @@
 <html>
 <head>
     <title>Covoiturage</title>
+    <!-- Include Font Awesome stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* General Body Styling */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'DyeLine', sans-serif; /* Fancy font family */
+            margin: 0;
+            padding: 0;
         }
 
         /* Header and Navigation Styling */
         header {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #e7e7e7;
+            position: relative;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            background-color: transparent;
             padding: 20px 0;
+            overflow: hidden;
+            border-bottom: 1.7px solid #b5c2b7; /* Border style */
         }
 
         .main-nav {
@@ -21,10 +31,30 @@
             justify-content: space-between;
             margin: 0 auto;
             width: 80%;
+            position: relative;
         }
 
-        .logo img {
-            height: 60px;
+        .logo {
+            font-size: 28px; /* Larger font size */
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: 'Arial', sans-serif;
+            letter-spacing: 3px; /* Increased letter spacing */
+            text-shadow: 2px 2px 2px rgba(0,0,0,0.2); /* Shadow effect */
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #001233; /* Override default link color */
+        }
+
+        .logo a:hover,
+        .logo a:active,
+        .logo a:focus {
+            color: #001233; /* Maintain consistent color */
         }
 
         .menu {
@@ -32,16 +62,17 @@
             margin: 0;
             padding: 0;
             display: flex;
+            align-items: center; /* Center horizontally */
+            justify-content: center; /* Center vertically */
         }
 
         .menu li {
-            margin-left: 20px;
+            margin-left: 50px;
         }
 
         .menu li a {
             text-decoration: none;
-            color: #333;
-            font-weight: bold;
+            color: black;
         }
 
         /* Responsive Design */
@@ -59,26 +90,9 @@
             .menu li {
                 margin-bottom: 10px;
             }
-        }
-        .logo {
-            /* Instead of setting the height for img, we'll style the text */
-            font-size: 24px; /* You can adjust the size as needed */
-            font-weight: bold;
-            color: #007bff; /* This is just an example color, choose what fits your design */
-            text-transform: uppercase; /* Capitalize all letters */
-            font-family: 'Arial', sans-serif;
-            letter-spacing: 2px; /* Increase spacing between letters */
-            /* Optional: Add some text shadow for depth */
-            text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            white-space: nowrap; /* Ensure the logo text stays on one line */
-        }
 
-        /* Responsive Design */
-        @media screen and (max-width: 768px) {
             .logo {
-                font-size: 18px; /* Smaller font size on smaller screens */
+                font-size: 24px; /* Adjust font size for smaller screens */
             }
         }
     </style>
@@ -86,25 +100,18 @@
 <body>
     <header>
         <nav class="main-nav">
-        <div class="logo">
-                COVOITURAGE COMPUS
+            <div class="logo">
+                <a href="http://localhost/free-sgbd203/index.php">COVOITURAGE COMPUS</a>
             </div>
             <ul class="menu">
-                <li><a href="http://localhost/free-sgbd203/index.php">Accueil</a></li>
                 <li><a href="http://localhost/free-sgbd203/php/contact.php">Contact</a></li>
-                <li><a href="http://localhost/free-sgbd203/php/trajet.php">Trajets</a></li>
-                <li><a href="http://localhost/free-sgbd203/php/login.php">Login </a></li>
+                <li><a href="http://localhost/free-sgbd203/php/trajet.php">Trajet</a></li>
                 <li><a href="http://localhost/free-sgbd203/php/select.php">select </a></li>
-                <li><a href="http://localhost/free-sgbd203/php/passager.php">Passager </a></li>
-                <li><a href="http://localhost/free-sgbd203/php/conducteur.php">Conducteur </a></li>
                 <li><a href="http://localhost/free-sgbd203/php/statistiques.php">Statistiques </a></li>
                 <li><a href="http://localhost/free-sgbd203/php/consultation.php">Consultation </a></li>
-
+                <li><a href="http://localhost/free-sgbd203/php/login.php"><i class="fas fa-user"></i> Login </a></li>
             </ul>
         </nav>
     </header>
-    <!-- <section class="welcome-section">
-        <h1 class="welcome-text">Bienvenue sur notre service de covoiturage</h1>
-    </section> -->
 </body>
 </html>

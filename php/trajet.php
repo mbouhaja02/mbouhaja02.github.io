@@ -8,7 +8,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding-top: 60px;
-            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
+            background: linear-gradient(to right, #2a5298, #1e3c72);
             margin: 0;
         }
 
@@ -20,7 +20,38 @@
             color: white;
             padding: 20px 0;
             text-align: center;
+        }
 
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .column {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .button i {
+            margin-right: 8px;
         }
 
         #container {
@@ -47,24 +78,17 @@
             border-bottom: 1px solid #ddd;
         }
 
-        h2{
-            text-align: center;
-            color:black;
-        }
-
         th {
             background-color: #4CAF50;
             color: white;
         }
 
-    
         tr:hover {
-            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
-
+            background: linear-gradient(to right, #2a5298, #1e3c72);
         }
 
         button, input[type=submit] {
-            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
+            background: linear-gradient(to right, #2a5298, #1e3c72);
             color: white;
             padding: 10px 20px;
             border: none;
@@ -74,21 +98,12 @@
             margin: 10px 0;
         }
 
-
-        .addTrajetForm{
-            text-align: center;
-        }
-
-        .form-section {
-            margin-bottom: 20px;
-            text-align: left;
-            text-align: center;
-        }
-
         .form-section input {
             width: calc(50% - 20px);
             padding: 10px;
             margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
         @media screen and (max-width: 600px) {
@@ -96,52 +111,6 @@
                 width: calc(100% - 20px);
             }
         }
-
-        .form-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-}
-
-.form-trajet .form-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.form-trajet .form-group input {
-    flex: 0 0 48%; /* Pour que deux champs soient sur la même ligne */
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.form-trajet .submit-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 1rem;
-}
-
-.form-trajet .submit-button:hover {
-    background-color: #45a049;
-}
-
-@media (max-width: 768px) {
-    .form-trajet .form-group input {
-        flex: 0 0 100%;
-    }
-}
-
- 
     </style>
 </head>
 <body>
@@ -149,87 +118,74 @@
     <?php include('../connect.php'); ?>
 
     <div id="container">
-        <h2>Résultats de Test Table TRAJET</h2>
-        <button id="showTableBtn">Afficher les Résultats</button>
-        <div id="tableContainer" style="display:none;">
-            <?php
-            $query = "SELECT * FROM TRAJET";
-            if ($result = $conn->query($query)) {
+        <form method="post">
+            Destination: <input type="text" name="ville" required>
+            Date de départ: <input type="date" name="date1" required>
+            Date d'arrivée: <input type="date" name="date2" required>
+            <button type="submit">Afficher les trajets</button>
+        </form>
+        
+        <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $date1 = $_POST['date1'];
+            $date2 = $_POST['date2'];
+            $ville = $_POST['ville'];
+
+            $dateSQL1 = date('Y-m-d', strtotime($date1));
+            $dateSQL2 = date('Y-m-d', strtotime($date2));
+
+            $stmt = $conn->prepare("SELECT * FROM TRAJET WHERE DATE_DEPART BETWEEN ? AND ? AND ADRESSE_ARRIVEE = ?;");
+            $stmt->bind_param("sss", $dateSQL1, $dateSQL2, $ville);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
                 echo '<table>';
-            echo '<tr><th>num_trajet</th><th>NUM_IMMATRICULE</th><th class="date">DATE_DEPART</th><th>DATE_ARRIVEE</th><th>VILLE_DEPART</th>
+                echo '<tr><th>num_trajet</th><th>NUM_IMMATRICULE</th><th class="date">DATE_DEPART</th><th>DATE_ARRIVEE</th><th>VILLE_DEPART</th>
             <th>ADRESSE_ARRIVEE</th><th>CODE_POSTAL</th><th>NBR_ESCALE</th><th>PRIX_KILOMETRAGE</th><th>DISTANCE_TOTAL</th><th>DUREE_ESTIME</th></tr>';
-            while ($row = $result->fetch_assoc()) {
-                echo '<tr>';
-                echo '<td>' . $row["NUM_TRAJET"] . '</td>';
-                echo '<td>' . $row["NUM_IMMATRICULE"] . '</td>';
-                echo '<td>' . $row["DATE_DEPART"] . '</td>';
-                echo '<td>' . $row["DATE_ARRIVEE"] . '</td>';
-                echo '<td>' . $row["VILLE_DEPART"] . '</td>';
-                echo '<td>' . $row["ADRESSE_ARRIVEE"] . '</td>';
-                echo '<td>' . $row["CODE_POSTAL"] . '</td>';
-                echo '<td>' . $row["NBR_ESCALES"] . '</td>';
-                echo '<td>' . $row["PRIX_KILOMETRAGE"] . '</td>';
-                echo '<td>' . $row["DISTANCE_TOTAL"] . '</td>';
-                echo '<td>' . $row["DUREE_ESTIME"] . '</td>';
-                echo '</tr>';
-            }
-            echo '</table>';
+                while ($row = $result->fetch_assoc()) {
+                    echo '<tr>';
+                    echo '<td>' . $row["NUM_TRAJET"] . '</td>';
+                    echo '<td>' . $row["NUM_IMMATRICULE"] . '</td>';
+                    echo '<td>' . $row["DATE_DEPART"] . '</td>';
+                    echo '<td>' . $row["DATE_ARRIVEE"] . '</td>';
+                    echo '<td>' . $row["VILLE_DEPART"] . '</td>';
+                    echo '<td>' . $row["ADRESSE_ARRIVEE"] . '</td>';
+                    echo '<td>' . $row["CODE_POSTAL"] . '</td>';
+                    echo '<td>' . $row["NBR_ESCALES"] . '</td>';
+                    echo '<td>' . $row["PRIX_KILOMETRAGE"] . '</td>';
+                    echo '<td>' . $row["DISTANCE_TOTAL"] . '</td>';
+                    echo '<td>' . $row["DUREE_ESTIME"] . '</td>';
+                    echo '</tr>';
+                }
+                echo '</table>';
             } else {
-                echo '<div id="result"><h3>Erreur :</h3>';
-                echo '<p>' . $conn->error . '</p>';
-                echo '</div>';
+                echo '<div id="result"><h3>Aucun trajet trouvé pour cette ville à la date donnée.</h3></div>';
             }
-            $conn->close();
-            ?>
+
+            $stmt->close();
+        }
+
+        $conn->close();
+        ?>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <button class="button" id="reserver"><i class="fas fa-search"></i>reserver</button>
+        </div>
+        <div class="column">
+            <button class="button" id="proposer escale"><i class="fas fa-plus"></i>proposer escale</button>
         </div>
     </div>
-    <!-- Formulaire HTML pour l'ajout d'un nouveau trajet -->
-
-    <div id="addTrajetForm" class="form-container">
-    <h2>Ajouter un nouveau trajet</h2>
-    <form action="insert_trajet.php" method="post" class="form-trajet">
-        <div class="form-group">
-            <input type="text" name="num_trajet" placeholder="Numéro trajet" required>
-            <input type="text" name="num_immatricule" placeholder="Numéro Immatricule" required>
-        </div>
-        <div class="form-group">
-            <input type="text" name="date_depart" placeholder="Date de départ" required>
-            <input type="text" name="date_arrivee" placeholder="Date d'arrivée" required>
-        </div>
-        <div class="form-group">
-            <input type="text" name="ville_depart" placeholder="Ville de départ" required>
-            <input type="text" name="adresse_arrivee" placeholder="Adresse d'arrivée" required>
-        </div>
-        <div class="form-group">
-            <input type="text" name="code_postal" placeholder="Code postal" required>
-            <input type="text" name="nbr_escales" placeholder="Nombre d'escales" required>
-        </div>
-        <div class="form-group">
-            <input type="text" name="prix_kilometrage" placeholder="Prix du kilométrage" required>
-            <input type="text" name="distance_total" placeholder="Distance totale" required>
-        </div>
-        <div class="form-group">
-            <input type="text" name="duree_estime" placeholder="Durée estimée" required>
-        </div>
-        <button type="submit" class="submit-button">Ajouter Trajet</button>
-    </form>
-</div>
-
-
-<div class="form-section">
-<h2>Supprimer un nouveau trajet</h2>
-<form action="delete_trajet.php" method="post">
-    <input type="number" name="num_trajet" placeholder="Numéro du trajet" required>
-    <button type="submit">Supprimer Trajet</button>
-</form>
-        </div>
-
-
 
     <script>
-        document.getElementById('showTableBtn').addEventListener('click', function() {
-            var tableContainer = document.getElementById('tableContainer');
-            tableContainer.style.display = tableContainer.style.display === 'none' ? 'block' : 'none';
+        document.getElementById('reserver').addEventListener('click', function() {
+            window.location.href = 'http://localhost/free-sgbd203/php/trajet.php';
+        });
+
+        document.getElementById('proposer escale').addEventListener('click', function() {
+            window.location.href = 'http://localhost/free-sgbd203/php/ajout_escale.php';
         });
     </script>
 </body>
