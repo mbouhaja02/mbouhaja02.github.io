@@ -31,21 +31,11 @@ body {
     color: #CCCCCC;
     font-size: 12px; 
     bottom: 0;
+    position: fixed;
+
 }
 
-/* #footer {
-    width: 100%;
-    height: 50px;
-    background-color: #222222;
-    border-top: solid #444444 8px;
-    box-shadow: 0 -5px 5px #858585;
-    color: #CCCCCC;
-    font-size: 12px;
-    padding: 10px 0;
-    text-align: center;
-    position: fixed; /* Utilisez "fixed" au lieu de "absolute" */
-   /* bottom: 0;
-} */
+
 
 
     </style>

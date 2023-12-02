@@ -7,27 +7,51 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding-top: 60px;
-            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
-            color: white; /* Texte en blanc pour contraste */
+            padding: 60px 20px 20px 20px;
+            background: linear-gradient(to right, #2a5298, #1e3c72); 
+            color: white;
             margin: 0;
         }
 
-        h3{
+        h2, h3 {
             color: white;
             text-align: center;
+            margin: 20px 0;
         }
-        h2 {
-            text-align: center;
-        }
+
         .tableContainer {
             background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-}
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            max-width: 800px; /* Limite la largeur */
+            margin-left: auto; /* Centrage horizontal */
+            margin-right: auto;
+        }
 
+        table {
+            width: 100%; /* Utilise toute la largeur du conteneur */
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+
+        }
+
+        th {
+            background-color: #4a69bd;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* Couleur de fond pour les lignes paires */
+            color: black; /* Couleur du texte pour les lignes paires */
+        }
     </style>
 </head>
 <body>
@@ -130,6 +154,5 @@
 
 
 
-<?php include('footer.php'); ?>
 </body>
 </html>
