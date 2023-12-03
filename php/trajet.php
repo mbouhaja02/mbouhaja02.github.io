@@ -181,7 +181,7 @@
 
     <script>
         document.getElementById('reserver').addEventListener('click', function() {
-            window.location.href = 'http://localhost/free-sgbd203/php/trajet.php';
+            window.location.href = 'http://localhost/free-sgbd203/php/reservation.php';
         });
 
         document.getElementById('proposer escale').addEventListener('click', function() {

@@ -107,7 +107,7 @@
                     <button class="button" id="rider"><i class="fas fa-plus"></i>Become a rider</button>
                 </div>
                 <div class="column">
-                    <button class="button" id="chi haja"><i class="fas fa-plus"></i>Chi haja khra</button>
+                    <button class="button" id="reservation"><i class="fas fa-plus"></i>Chi haja khra</button>
                 </div>
             </div>  
         </div>
@@ -140,8 +140,8 @@
         document.getElementById('rider').addEventListener('click', function() {
             window.location.href = 'http://localhost/free-sgbd203/php/add_car.php';
         });
-        document.getElementById('publishButton').addEventListener('click', function() {
-            window.location.href = 'http://localhost/free-sgbd203/php/chi_haja.php';
+        document.getElementById('reservation').addEventListener('click', function() {
+            window.location.href = 'http://localhost/free-sgbd203/php/reservation.php';
         });
     </script>
 

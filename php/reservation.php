@@ -3,23 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escales</title>
+    <title>Trajets</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding-top: 60px;
-            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
+            background: linear-gradient(to right, #2a5298, #1e3c72);
+            color: white;
             margin: 0;
         }
 
-        header {
+        #container {
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: black;
+        }
+
+        table {
             width: 100%;
-            position: fixed;
-            z-index: 1000;
-            background: #333;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
 
         th, td {
@@ -28,32 +34,34 @@
             border-bottom: 1px solid #ddd;
         }
 
-        h2 {
-            text-align: center;
-            color: black;
-        }
-
         th {
-            background-color: #4CAF50;
+            background-color: #1e3c72;
             color: white;
         }
 
-        tr:hover {
-            background-color: #2a5298; /* Dégradé de bleu pour hover */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
 
-        button, input[type=submit] {
-            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        button {
+            background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            margin: 10px 0;
         }
 
-        .addEscaleForm {
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
             text-align: center;
         }
 
@@ -73,7 +81,7 @@
         }
 
         .form-group input {
-            flex: 0 0 48%; /* Pour que deux champs soient sur la même ligne */
+            flex: 0 0 48%;
             margin-bottom: 10px;
             padding: 10px;
             border: 1px solid #ccc;
@@ -95,36 +103,40 @@
             background-color: #45a049;
         }
 
+        @media screen and (max-width: 600px) {
+            .form-group input {
+                width: calc(100% - 20px);
+            }
+        }
+
         @media (max-width: 768px) {
             .form-group input {
                 flex: 0 0 100%;
             }
         }
-
     </style>
 </head>
 <body>
     <?php include('header.php'); ?>
     <?php include('../connect.php'); ?>
 
-    <div id="addEscaleForm" class="form-container">
-        <h2>Ajouter un nouveau escale</h2>
-        <form action="insert_escale.php" method="post" class="form-escale">
+    <div id="addPassagerForm" class="form-container">
+        <h2>Ajouter un nouveau passager</h2>
+        <form action="insert_passager.php" method="post" class="form-passager">
             <div class="form-group">
-            <input type="text" name="num_escale" placeholder="Numéro Escale" required>
-                <input type="text" name="num_trajet" placeholder="Numéro trajet" required>
+                <input type="text" name="num_etudiant" placeholder="Numéro Etudiant" required>
+                <input type="text" name="PRENOM" placeholder="Prénom" required>
+                <input type="text" name="NOM" placeholder="Nom" required>
             </div>
-            <div class="form-group">
-                <input type="text" name="adresse" placeholder="Adresse" required>
-                <input type="text" name="code_postal" placeholder="Code postal" required>
-            </div>
-            <div class="form-group">
-                <input type="text" name="heure_arrivee" placeholder="Heure d'arrivée" required>
-                <input type="text" name="validation_escale" placeholder="Validation" required>
-            </div>
-            <button type="submit" class="submit-button">Ajouter Escale</button>
+            <button type="submit" class="submit-button">Ajouter Passager</button>
         </form>
     </div>
 
+    <script>
+        document.getElementById('showTableBtn').addEventListener('click', function() {
+            var tableContainer = document.getElementById('tableContainer');
+            tableContainer.style.display = tableContainer.style.display === 'none' ? 'block' : 'none';
+        });
+    </script>
 </body>
 </html>

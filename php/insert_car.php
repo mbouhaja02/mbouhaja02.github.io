@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $check->get_result();
 
     if ($result->num_rows > 0) {
+        header("Refresh:1; url=add_car.php");
         echo "Cette voiture existe déjà!";
     } else {
         $query = "INSERT INTO VOITURE (NUM_IMMATRICULE, NUM_CONDUCTEUR, TYPE_VOITURE, COULEUR, ETAT, NBR_PASSAGER) VALUES (?, ?, ?, ?, ?, ?)";
@@ -26,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
         $stmt->bind_param("iisssi", $num_immatricule, $num_conducteur, $type_voiture, $couleur, $etat, $nbr_passager);
         if ($stmt->execute()) {
+            header("Refresh:1; url=add_car.php");
             echo "Nouvelle voiture ajoutée avec succès!";
         } else {
             echo "Erreur: " . $stmt->error;
