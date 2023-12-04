@@ -8,19 +8,19 @@ error_reporting(E_ALL);
 // Vérifiez si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['num_trajet'])) {
     // Collecter les données du formulaire
-    $adresse = $_POST['adresse'];
-    $code_postal = $_POST['code_postal'];
+    $email = $_POST['email'];
+    $num_etudiant = $_POST['num_etudiant'];
     $num_trajet = $_GET['num_trajet'];
 
     // Préparer la requête SQL pour insérer le escale
-    $query = "INSERT INTO ESCALE (NUM_TRAJET, ADRESSE, CODE_POSTAL) VALUES (?, ?, ?)";
+    $query = "INSERT INTO RESERVATION (NUM_PASSAGER, NUM_TRAJET) VALUES (?, ?)";
     $stmt = $conn->prepare($query);
     
     // Associer les valeurs et exécuter la requête
-    $stmt->bind_param("isi", $num_trajet, $adresse, $code_postal);
+    $stmt->bind_param("ii", $num_etudiant ,$num_trajet);
     if ($stmt->execute()) {
-        header("Refresh:1; url=ajout_escale.php?num_trajet=$num_trajet");
-        echo "Nouvelle escale ajoutée avec succès! Redirection en cours...";
+        header("Refresh:1; url=info_trajet.php?num_trajet=$num_trajet");
+        echo "Réservation effectuée avec succès! Redirection en cours...";
     } else {
         echo "Erreur: " . $stmt->error;
     }

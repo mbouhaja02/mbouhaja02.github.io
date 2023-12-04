@@ -111,12 +111,12 @@
         <h2>Ajouter un nouveau trajet</h2>
         <form action="insert_trajet.php" method="post" class="form-trajet">
             <div class="form-group">
-                <input type="text" name="num_trajet" placeholder="Numéro trajet" required>
+            <input type="text" name="num_etudiant" placeholder="Numéro Etudiant" required>
                 <input type="text" name="num_immatricule" placeholder="Numéro Immatricule" required>
             </div>
             <div class="form-group">
-                <input type="text" name="date_depart" placeholder="Date de départ" required>
-                <input type="text" name="date_arrivee" placeholder="Date d'arrivée" required>
+                <input type="date" name="date_depart" id="leaveon" placeholder="Date de départ" required>
+                <input type="date" name="date_arrivee" id="arriveon" placeholder="Date d'arrivée" required>
             </div>
             <div class="form-group">
                 <input type="text" name="ville_depart" placeholder="Ville de départ" required>
@@ -136,6 +136,19 @@
             <button type="submit" class="submit-button">Ajouter Trajet</button>
         </form>
     </div>
+
+    <script>
+        // Get today's date
+        var today = new Date().toISOString().split('T')[0];
+
+        // Set the minimum date for departureDate input
+        document.getElementById('leaveon').setAttribute('min', today);
+
+        // Function to set the minimum date for arrivalDate input based on departureDate selection
+        document.getElementById('leaveon').addEventListener('change', function() {
+            document.getElementById('arriveon').setAttribute('min', this.value);
+        });
+    </script>
 
 </body>
 </html>

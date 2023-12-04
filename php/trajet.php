@@ -120,8 +120,8 @@
     <div id="container">
         <form method="post">
             Destination: <input type="text" name="ville" required>
-            Date de départ: <input type="date" name="date1" required>
-            Date d'arrivée: <input type="date" name="date2" required>
+            Date de départ: <input type="date" name="date1" id="leave" required>
+            Date d'arrivée: <input type="date" name="date2" id="arrive" required>
             <button type="submit">Afficher les trajets</button>
         </form>
         
@@ -144,7 +144,7 @@
                 echo '<tr><th>num_trajet</th><th>NUM_IMMATRICULE</th><th class="date">DATE_DEPART</th><th>DATE_ARRIVEE</th><th>VILLE_DEPART</th>
             <th>ADRESSE_ARRIVEE</th><th>CODE_POSTAL</th><th>NBR_ESCALE</th><th>PRIX_KILOMETRAGE</th><th>DISTANCE_TOTAL</th><th>DUREE_ESTIME</th></tr>';
                 while ($row = $result->fetch_assoc()) {
-                    echo '<tr>';
+                    echo '<tr class="clickable-row" data-href="info_trajet.php?num_trajet=' . $row["NUM_TRAJET"] . '">';
                     echo '<td>' . $row["NUM_TRAJET"] . '</td>';
                     echo '<td>' . $row["NUM_IMMATRICULE"] . '</td>';
                     echo '<td>' . $row["DATE_DEPART"] . '</td>';
@@ -188,5 +188,34 @@
             window.location.href = 'http://localhost/free-sgbd203/php/ajout_escale.php';
         });
     </script>
+
+    <script>
+        // Get today's date
+        var today = new Date().toISOString().split('T')[0];
+
+        // Set the minimum date for departureDate input
+        document.getElementById('leave').setAttribute('min', today);
+
+        // Function to set the minimum date for arrivalDate input based on departureDate selection
+        document.getElementById('leave').addEventListener('change', function() {
+            document.getElementById('arrive').setAttribute('min', this.value);
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var rows = document.querySelectorAll(".clickable-row");
+
+            rows.forEach(function(row) {
+                row.addEventListener("click", function() {
+                    var href = this.dataset.href;
+                    if (href) {
+                        window.location.href = href;
+                    }
+                });
+            });
+        });
+</script>
+
 </body>
 </html>

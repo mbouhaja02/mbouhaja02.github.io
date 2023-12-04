@@ -108,23 +108,16 @@
     <?php include('../connect.php'); ?>
 
     <div id="addEscaleForm" class="form-container">
-        <h2>Ajouter un nouveau escale</h2>
-        <form action="insert_escale.php" method="post" class="form-escale">
-            <div class="form-group">
-            <input type="text" name="num_escale" placeholder="Numéro Escale" required>
-                <input type="text" name="num_trajet" placeholder="Numéro trajet" required>
-            </div>
-            <div class="form-group">
-                <input type="text" name="adresse" placeholder="Adresse" required>
-                <input type="text" name="code_postal" placeholder="Code postal" required>
-            </div>
-            <div class="form-group">
-                <input type="text" name="heure_arrivee" placeholder="Heure d'arrivée" required>
-                <input type="text" name="validation_escale" placeholder="Validation" required>
-            </div>
-            <button type="submit" class="submit-button">Ajouter Escale</button>
-        </form>
+    <h2>Proposer une escale</h2>
+    <form action="insert_escale.php<?php if(isset($_GET['num_trajet'])) { echo '?num_trajet=' . $_GET['num_trajet']; } ?>" method="post" class="form-escale">
+        <div class="form-group">
+            <input type="text" name="adresse" placeholder="Adresse" required>
+            <input type="text" name="code_postal" placeholder="Code postal" required>
+        </div>
+        <button type="submit" class="submit-button">Ajouter Escale</button>
+    </form>
     </div>
+
 
 </body>
 </html>

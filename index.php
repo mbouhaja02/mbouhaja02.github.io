@@ -51,7 +51,7 @@
         }
 
         .button {
-            background-image: radial-gradient(#495057, #343a40, #212529);
+            background-image: radial-gradient(#132e32, #132e32, #132e32);
             border: none;
             padding: 15px 32px;
             text-align: center;
@@ -60,7 +60,7 @@
             font-size: 24px;
             border-radius: 12px;
             width: 95%;
-            color: #adb5bd;
+            color: white;
             margin: 10px auto; /* Centering the button */
         }
 
@@ -101,7 +101,7 @@
                     <button class="button" id="searchButton"><i class="fas fa-search"></i>Search for a ride</button>
                 </div>
                 <div class="column">
-                    <button class="button" id="publishButton"><i class="fas fa-plus"></i>Publish a ride</button>
+                    <button class="button" id="publishButton"><i class="fas fa-plus"></i>Publier un trajet</button>
                 </div>
                 <div class="column">
                     <button class="button" id="rider"><i class="fas fa-plus"></i>Become a rider</button>
