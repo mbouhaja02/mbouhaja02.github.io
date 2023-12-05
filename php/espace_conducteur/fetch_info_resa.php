@@ -56,12 +56,14 @@ if (isset($_GET['num_etudiant']) && !empty($_GET['num_etudiant'])) {
     $num_etudiant = $_GET['num_etudiant'];
 
     // Perform a database query based on the student number using a prepared statement
-    $query1 = "SELECT E.NUM_ETUDIANT, E.NOM, E.PRENOM, T.NUM_TRAJET, R.VALIDATION_RESERVATION FROM ETUDIANT E 
+    $query1 = "SELECT E.NUM_ETUDIANT, E.NOM, E.PRENOM, T.NUM_TRAJET, R.VALIDATION_RESERVATION, EV.NOTE FROM ETUDIANT E 
                 JOIN PASSAGER P ON P.NUM_PASSAGER = E.NUM_ETUDIANT
                 JOIN RESERVATION R ON R.NUM_PASSAGER = P.NUM_PASSAGER
                 JOIN TRAJET T ON T.NUM_TRAJET = R.NUM_TRAJET
                 JOIN VOITURE V ON V.NUM_IMMATRICULE = T.NUM_IMMATRICULE
-                WHERE V.NUM_CONDUCTEUR = ?";
+                LEFT JOIN EVALUATION EV ON EV.NUM_ETUDIANT_EVALUE = P.NUM_PASSAGER
+                WHERE V.NUM_CONDUCTEUR = ?
+                ORDER BY EV.NOTE DESC";
     
     $stmt1 = $conn->prepare($query1);
     $stmt1->bind_param("i", $num_etudiant);
@@ -71,7 +73,7 @@ if (isset($_GET['num_etudiant']) && !empty($_GET['num_etudiant'])) {
     if ($result1->num_rows > 0) {
         echo '<table>';
         echo '<tr>';
-        $columns = ['NOM', 'PRENOM', 'NUM_TRAJET', 'ACTION'];
+        $columns = ['NOM', 'PRENOM', 'NUM_TRAJET', 'NOTE' ,'ACTION'];
         foreach ($columns as $column) {
             echo "<th>$column</th>";
         }
@@ -100,7 +102,7 @@ if (isset($_GET['num_etudiant']) && !empty($_GET['num_etudiant'])) {
         }
         echo '</table>';
     } else {
-        echo "Aucun résultat trouvé";
+        echo "Aucune demande de réservation trouvée";
     }
 
     // Close statement and connection
