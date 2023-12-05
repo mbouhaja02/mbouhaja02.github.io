@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escales</title>
     <style>
-        body {
+    body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding-top: 60px;
-            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
+            background-color: #f2f2f2; /* Fond légèrement gris */
             margin: 0;
+            color: #000000; /* Texte noir pour le contraste */
         }
 
         header {
@@ -43,7 +44,7 @@
         }
 
         button, input[type=submit] {
-            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
+            background: #333; 
             color: white;
             padding: 10px 20px;
             border: none;
@@ -51,9 +52,10 @@
             cursor: pointer;
             font-size: 16px;
             margin: 10px 0;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
-        .addEscaleForm {
+        .addTrajetForm {
             text-align: center;
         }
 
@@ -81,7 +83,7 @@
         }
 
         .submit-button {
-            background-color: #4CAF50;
+            background-color: #333;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -89,10 +91,12 @@
             cursor: pointer;
             width: 100%;
             font-size: 1rem;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         .submit-button:hover {
-            background-color: #45a049;
+            background-color: #555;
+            transform: scale(1.05);
         }
 
         @media (max-width: 768px) {
@@ -100,7 +104,6 @@
                 flex: 0 0 100%;
             }
         }
-
     </style>
 </head>
 <body>
@@ -109,14 +112,22 @@
 
     <div id="addEscaleForm" class="form-container">
     <h2>Proposer une escale</h2>
-    <form action="insert_escale.php<?php if(isset($_GET['num_trajet'])) { echo '?num_trajet=' . $_GET['num_trajet']; } ?>" method="post" class="form-escale">
+    <form action="insert_escale.php<?php
+        if(isset($_GET['num_trajet'])) {
+            echo '?num_trajet=' . $_GET['num_trajet'];
+            if(isset($_GET['num_passager'])) {
+                echo '&num_passager=' . $_GET['num_passager'];
+            }
+        } ?>" method="post" class="form-escale">
         <div class="form-group">
             <input type="text" name="adresse" placeholder="Adresse" required>
             <input type="text" name="code_postal" placeholder="Code postal" required>
+            <input type="text" name="num_passager" placeholder="Numéro étudiant" required>
         </div>
         <button type="submit" class="submit-button">Ajouter Escale</button>
     </form>
-    </div>
+</div>
+
 
 
 </body>
