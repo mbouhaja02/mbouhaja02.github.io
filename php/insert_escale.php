@@ -1,34 +1,50 @@
 <?php
-include('../connect.php'); // Inclure le fichier de connexion à la base de données
+include('../connect.php'); // Include the file for database connection
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
-// Vérifiez si le formulaire a été soumis
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['num_trajet'])) {
-    // Collecter les données du formulaire
+// Check if the form was submitted and if 'num_trajet' is set in the URL
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['num_trajet']) && isset($_POST['num_passager'])) {
+    // Collect form data
     $adresse = $_POST['adresse'];
     $code_postal = $_POST['code_postal'];
     $num_trajet = $_GET['num_trajet'];
+    $num_passager = $_POST['num_passager'];
 
-    // Préparer la requête SQL pour insérer le escale
-    $query = "INSERT INTO ESCALE (NUM_TRAJET, ADRESSE, CODE_POSTAL) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($query);
-    
-    // Associer les valeurs et exécuter la requête
-    $stmt->bind_param("isi", $num_trajet, $adresse, $code_postal);
-    if ($stmt->execute()) {
-        header("Refresh:1; url=ajout_escale.php?num_trajet=$num_trajet");
-        echo "Nouvelle escale ajoutée avec succès! Redirection en cours...";
+    // Insert data into ESCALE table
+    $query1 = "INSERT INTO ESCALE (NUM_TRAJET, ADRESSE, CODE_POSTAL) VALUES (?, ?, ?)";
+    $stmt1 = $conn->prepare($query1);
+    $stmt1->bind_param("iss", $num_trajet, $adresse, $code_postal);
+
+    // Execute the ESCALE query
+    if ($stmt1->execute()) {
+        $num_escale = $stmt1->insert_id; // Get the inserted ID of the newly added row
+
+        // Insert data into PROPOSITION table
+        $query = "INSERT INTO PROPOSITION (NUM_PASSAGER, NUM_ESCALE) VALUES (?, ?)";
+        $stmt = $conn->prepare($query);
+
+        // Bind values and execute the query for PROPOSITION
+        $stmt->bind_param("ii", $num_passager, $num_escale); // Use $num_escale here as the NUM_ESCALE value
+        if ($stmt->execute()) {
+            header("Refresh:1; url=ajout_escale.php?num_trajet=$num_trajet");
+            echo "Nouvelle escale ajoutée avec succès! Redirection en cours...";
+        } else {
+            echo "Erreur lors de l'insertion de la proposition: " . $stmt->error;
+        }
+
+        // Close PROPOSITION statement
+        $stmt->close();
     } else {
-        echo "Erreur: " . $stmt->error;
+        echo "Erreur lors de l'insertion de l'escale: " . $stmt1->error;
     }
 
-    // Fermer la déclaration
-    $stmt->close();
+    // Close ESCALE statement
+    $stmt1->close();
 }
 
-// Fermer la connexion
+// Close the database connection
 $conn->close();
 ?>
+
