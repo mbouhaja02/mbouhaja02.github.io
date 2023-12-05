@@ -5,88 +5,103 @@
     <link rel="icon" type="image/x-icon" href="LOGOV1.0.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"> <!-- For FontAwesome icons -->
     <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background: linear-gradient(to right, #2a5298, #1e3c72); /* Gradient blue background */
-            padding-top: 80px;
-            margin: 0;
-        }
+    body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: #ffffff;
+        color: #000000;
+        margin: 0;
+        padding-top: 80px;
+    }
 
-        .column, .column1 {
-            float: left;
-            width: 50%;
-            box-sizing: border-box; /* Adjusts the box model */
-        }
+    .row, .row1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
 
-        /* Clearfix for the .row */
-        .row1 {
-            content: "";
-            display: table;
-            clear: both;
-            text-align: center;
-        }
+    .column, .column1 {
+        flex: 1;
+        min-width: 250px; /* Assure une largeur minimale pour la responsivité */
+        box-sizing: border-box;
+        padding: 20px;
+    }
 
-        .column1 {
-            background-color: #f8f9fa; /* Light background color */
-            border-radius: 8px; /* Rounded corners */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-            padding: 20px;
-            margin: 20px;
-            max-width: 570px; /* Maximum width */
-            
-            
-        }
+    .column1 {
+        background-color: #f0f0f0;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        transition: transform 0.3s ease; /* Animation de transformation */
+    }
 
-        h2 {
-            color: #343a40; /* Darker color for headings */
-            margin-bottom: 15px; /* Spacing below the heading */
-            
-        }
+    .column1:hover {
+        transform: scale(1.05); /* Agrandissement au survol */
+    }
 
-        p {
-            color: #6c757d; /* Lighter color for text */
-            line-height: 1.6; /* Line height for readability */
-            font-size: 14px; /* Font size */
-            
-        }
+    h2 {
+        color: #000000;
+        margin-bottom: 15px;
+    }
 
-        .button {
-            background-image: radial-gradient(#132e32, #132e32, #132e32);
-            border: none;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 24px;
-            border-radius: 12px;
-            width: 95%;
-            color: white;
-            margin: 10px auto; /* Centering the button */
-        }
+    p {
+        color: #333333;
+        line-height: 1.6;
+        font-size: 14px;
+    }
 
-        .button i {
-            margin-right: 10px; /* Spacing out icon and text in button */
-        }
+    .button-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 
-        img {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 5px;
-            width: 50%; /* Adjusted for full width */
-            margin-top: 5px;
-            display: block;
-            margin-left: 100px;
-        }
-    </style>
+    .button {
+        background-color: #000000;
+        color: #ffffff;
+        border: none;
+        padding: 15px 32px;
+        text-align: center;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 8px;
+        margin: 10px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        width: auto;
+    }
+
+    .button:hover {
+        background-color: #555555;
+        transform: translateY(-5px);
+    }
+
+    img {
+        max-width: 150%; /* Assure que l'image est responsive */
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+    }
+</style>
+
+
 </head>
 <body>
     <?php include('php/header.php'); ?>
 
     <div class="row">
         <div class="column">
-            <img src="./img/carpool_index.png" alt="car">    
+            <img src="./img/voiture-1.jpg" alt="car">    
         </div>
         <div class="column">
+            
+            <div class="button-container">
+                <button class="button" id="searchButton"><i class="fas fa-search"></i> Search for a ride</button>
+                <button class="button" id="publishButton"><i class="fas fa-plus"></i> Publier un trajet</button>
+                <button class="button" id="driverSpace"><i class="fas fa-circle"></i> Mon Espace conducteur</button>
+                <button class="button" id="reservation"><i class="fas fa-car"></i> Mon espace passager</button>
+            </div>
+
             <div class="row" id="row_ad">
                 <div class="card">
                     <h2>Pick your next adventure ...</h2>
@@ -96,20 +111,6 @@
                     <h2>... Lyon ?</h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="column">
-                    <button class="button" id="searchButton"><i class="fas fa-search"></i>Search for a ride</button>
-                </div>
-                <div class="column">
-                    <button class="button" id="publishButton"><i class="fas fa-plus"></i>Publier un trajet</button>
-                </div>
-                <div class="column">
-                    <button class="button" id="driverSpace"><i class="fas fa-circle"></i>Mon Espace conducteur</button>
-                </div>
-                <div class="column">
-                    <button class="button" id="reservation"><i class="fas fa-car"></i>Mon espace passager</button>
-                </div>
-            </div>  
         </div>
     </div>
 

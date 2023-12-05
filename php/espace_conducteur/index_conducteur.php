@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Driver Space - Manage Car and Rides</title>
-    <!-- Add your CSS or external stylesheet links here -->
     <link rel="stylesheet" type="text/css" href="../../css/esp_conducteur.css">
+    <!-- Ajoutez ici d'autres liens vers des feuilles de style ou des scripts si nécessaire -->
 </head>
 <body>
     <?php include('../header.php'); ?>
@@ -19,11 +19,10 @@
             </ul>
         </div>
         <div class="main-content" id="mainContent">
-            <!-- Your content related to managing cars and rides goes here -->
             <h2>Welcome to the Driver Space</h2>
-            <!-- Form for Student Number -->
             <div class="form-container">
-                <p> Join the ride ! </p>
+                <p>Join the ride !</p>
+                <!-- Ajoutez ici vos autres éléments de formulaire ou de contenu -->
             </div>
         </div>
     </div>

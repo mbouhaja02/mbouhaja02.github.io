@@ -1,9 +1,10 @@
-/* General Styles */
+/* Styles généraux */
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: #f2f2f2; /* Light background color */
+    background-color: #f2f2f2;
     margin: 0;
     padding: 0;
+    font-size: 18px; /* Augmentation de la taille de la police générale */
 }
 
 .container {
@@ -13,15 +14,23 @@ body {
     padding: 20px;
 }
 
+/* Styles de la barre latérale */
 .sidebar {
-    width: 250px;
+    width: 20%; /* Utilisation d'un pourcentage pour une taille relative */
+    min-width: 250px; /* Largeur minimale pour assurer la lisibilité */
     background-color: #333;
     color: #fff;
+    transition: width 0.5s ease;
+}
+
+.sidebar:hover {
+    width: 25%; /* Augmentation de la largeur au survol */
 }
 
 .sidebar h2 {
     padding: 20px 0;
     text-align: center;
+    font-size: 24px; /* Augmentation de la taille de la police pour les titres */
 }
 
 .sidebar ul {
@@ -30,79 +39,73 @@ body {
 }
 
 .sidebar li {
-    padding: 10px 0;
+    padding: 15px 0; /* Plus d'espace entre les éléments de liste */
     text-align: center;
 }
 
 .sidebar a {
     text-decoration: none;
     color: #fff;
+    transition: color 0.5s ease;
 }
 
 .sidebar a:hover {
-    background-color: #555;
-}
-
-.sidebar li.active a {
-    background-color: #555; /* Change this to the desired active color */
+    color: #4CAF50;
 }
 
 .main-content {
-    flex: 1;
-    padding: 20px;
-}
-
-/* Form Styles */
-.form-container {
-    max-width: 400px;
-    margin: 20px auto;
+    flex-grow: 1; /* Permet au contenu principal de prendre l'espace restant */
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-.form-group {
-    margin-bottom: 15px;
+.main-content:hover {
+    transform: scale(1.02);
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.form-group input[type="text"] {
-    width: calc(100% - 12px);
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
+/* Styles des boutons */
 .form-group input[type="submit"] {
     background-color: #333;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .form-group input[type="submit"]:hover {
     background-color: #555;
+    transform: scale(1.1); /* Effet d'agrandissement au survol */
 }
 
-/* Delete Button Style */
+/* Styles pour les boutons de suppression */
 .form-group input[type="submit"].delete-button {
-    background-color: #ff4d4d; /* Red color for delete button */
+    background-color: #ff4d4d;
     color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .form-group input[type="submit"].delete-button:hover {
-    background-color: #e60000; /* Darker red on hover */
+    background-color: #e60000;
+    transform: scale(1.1); /* Effet d'agrandissement au survol */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .main-content {
+        margin-top: 0;
+    }
 }

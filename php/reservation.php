@@ -5,116 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trajets</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding-top: 60px;
-            background: linear-gradient(to right, #2a5298, #1e3c72);
-            color: white;
-            margin: 0;
-        }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding-top: 60px;
+        background-color: #ffffff; /* Fond blanc */
+        color: #000000; /* Texte noir pour le contraste */
+        margin: 0;
+    }
 
-        #container {
-            width: 80%;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            color: black;
-        }
+    #container {
+        width: 80%;
+        margin: 20px auto;
+        background-color: #fff; /* Fond blanc pour le container */
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        color: black; /* Texte en noir pour la lisibilité */
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
 
-        th {
-            background-color: #1e3c72;
-            color: white;
-        }
+    th {
+        background-color: #333; /* En-têtes de table en gris foncé */
+        color: white;
+    }
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+    tr:nth-child(even) {
+        background-color: #f2f2f2; /* Alternance de couleur pour les lignes */
+    }
 
-        tr:hover {
-            background-color: #ddd;
-        }
+    tr:hover {
+        background-color: #ddd; /* Couleur lors du survol d'une ligne */
+    }
 
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+    button, .submit-button {
+        background-color: #333; /* Boutons en gris foncé */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+    }
 
-        button:hover {
-            background-color: #45a049;
-        }
+    button:hover, .submit-button:hover {
+        background-color: #555; /* Gris plus clair au survol */
+    }
 
-        h2 {
-            text-align: center;
-        }
+    h2 {
+        text-align: center;
+        color: #333; /* Titre en gris foncé */
+    }
 
-        .form-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
+    .form-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
 
-        .form-group {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
+    .form-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 
+    .form-group input {
+        flex: 1 0 48%; /* Adaptation pour la réactivité */
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    @media screen and (max-width: 600px), (max-width: 768px) {
         .form-group input {
-            flex: 0 0 48%;
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            flex: 0 0 100%; /* Pleine largeur sur petits écrans */
         }
+    }
+</style>
 
-        .submit-button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-        }
-
-        .submit-button:hover {
-            background-color: #45a049;
-        }
-
-        @media screen and (max-width: 600px) {
-            .form-group input {
-                width: calc(100% - 20px);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .form-group input {
-                flex: 0 0 100%;
-            }
-        }
-    </style>
 </head>
 <body>
     <?php include('header.php'); ?>

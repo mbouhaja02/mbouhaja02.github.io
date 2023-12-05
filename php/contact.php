@@ -7,17 +7,17 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding-top: 60px;
-            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
-            color: white; /* Texte en blanc pour contraste */
+            background-color: #ffffff; /* Fond blanc */
+            color: #000000; /* Texte noir */
             margin: 0;
         }
         .contact-container {
-            background-color: white;
+            background-color: #f8f8f8; /* Fond légèrement gris pour le contraste */
             width: 80%;
             max-width: 800px;
             margin: 40px auto;
             padding: 40px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Ombre plus marquée pour le relief */
             border-radius: 8px;
         }
         .contact-form {
@@ -34,9 +34,11 @@
         .contact-form textarea {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid #ccc; /* Bordure plus claire */
             border-radius: 4px;
             margin-bottom: 20px;
+            background-color: #fff; /* Fond blanc pour les champs */
+            color: #000; /* Texte noir pour les champs */
         }
         .contact-form textarea {
             resize: vertical;
@@ -44,19 +46,20 @@
         }
         .contact-form button[type='submit'] {
             padding: 10px 20px;
-            background-color: #0056b3;
-            color: white;
+            background-color: #000000; /* Bouton noir */
+            color: #ffffff; /* Texte blanc sur le bouton */
             border: none;
             border-radius: 4px;
             cursor: pointer;
             text-transform: uppercase;
         }
         .contact-form button[type='submit']:hover {
-            background-color: #003d82;
+            background-color: #333333; /* Gris foncé au survol */
         }
         .contact-heading {
             text-align: center;
             margin-bottom: 40px;
+            color: #000000; /* Titre en noir */
         }
     </style>
 </head>

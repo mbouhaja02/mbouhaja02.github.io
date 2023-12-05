@@ -5,113 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trajets</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding-top: 60px;
-            background: linear-gradient(to right, #2a5298, #1e3c72);
-            margin: 0;
-        }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding-top: 60px;
+        background-color: #f2f2f2; /* Fond légèrement gris */
+        margin: 0;
+        color: #000000; /* Texte noir pour le contraste */
+    }
 
-        header {
-            width: 100%;
-            position: fixed;
-            z-index: 1000;
-            background: #333;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
+    header {
+        width: 100%;
+        position: fixed;
+        z-index: 1000;
+        background: #333;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+    }
 
-        .row {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
+    .row {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
 
-        .column {
-            flex: 1;
-            padding: 10px;
-            text-align: center;
-        }
+    .column {
+        flex: 1;
+        padding: 10px;
+        text-align: center;
+    }
 
-        .button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
+    .button {
+        background-color: #333; /* Boutons en gris foncé */
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s, transform 0.3s;
+    }
 
-        .button:hover {
-            background-color: #45a049;
-            transform: scale(1.05);
-        }
+    .button:hover {
+        background-color: #555; /* Gris plus clair au survol */
+        transform: scale(1.05);
+    }
 
-        .button i {
-            margin-right: 8px;
-        }
+    #container {
+        width: 80%;
+        margin: 100px auto;
+        background: white;
+        padding: 100px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-size: 0.8rem;
+    }
 
-        #container {
-            width: 80%;
-            margin: 100px auto;
-            background: white;
-            padding: 100px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            font-size: 0.8rem;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            box-shadow: 0 2px 3px rgba(0, 0, 0.1, 0);
-            text-align: center;
-        }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
 
-        th, td {
-            padding: 10px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+    th {
+        background-color: #333;
+        color: white;
+    }
 
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
+    tr:hover {
+        background-color: #ddd; /* Fond gris clair au survol */
+    }
 
-        tr:hover {
-            background: linear-gradient(to right, #2a5298, #1e3c72);
-        }
+    button, input[type=submit] {
+        background-color: #333;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 10px 0;
+    }
 
-        button, input[type=submit] {
-            background: linear-gradient(to right, #2a5298, #1e3c72);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 10px 0;
-        }
+    .form-section input {
+        width: calc(50% - 20px);
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
+    @media screen and (max-width: 600px) {
         .form-section input {
-            width: calc(50% - 20px);
-            padding: 10px;
-            margin: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            width: calc(100% - 20px);
         }
+    }
+</style>
 
-        @media screen and (max-width: 600px) {
-            .form-section input {
-                width: calc(100% - 20px);
-            }
-        }
-    </style>
 </head>
 <body>
     <?php include('header.php'); ?>

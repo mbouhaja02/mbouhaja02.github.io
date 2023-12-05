@@ -104,12 +104,10 @@
                 <a href="http://localhost/free-sgbd203/index.php">COVOITURAGE COMPUS</a>
             </div>
             <ul class="menu">
-                <li><a href="http://localhost/free-sgbd203/php/contact.php">Contact</a></li>
-                <li><a href="http://localhost/free-sgbd203/php/trajet.php">Trajet</a></li>
-                <li><a href="http://localhost/free-sgbd203/php/select.php">select </a></li>
-                <li><a href="http://localhost/free-sgbd203/php/statistiques.php">Statistiques </a></li>
-                <li><a href="http://localhost/free-sgbd203/php/consultation.php">Consultation </a></li>
                 <li><a href="http://localhost/free-sgbd203/php/login.php"><i class="fas fa-user"></i> Login </a></li>
+                <li><a href="http://localhost/free-sgbd203/php/statistiques.php">Stats et Consultation</a></li>
+                <li><a href="http://localhost/free-sgbd203/php/AboutUs.php"> AboutUs</a></li>
+                <li><a href="http://localhost/free-sgbd203/php/contact.php">Contact</a></li>
             </ul>
         </nav>
     </header>
