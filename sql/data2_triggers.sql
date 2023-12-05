@@ -67,5 +67,14 @@ BEGIN
     );
 END$$
 
+-- Trigger to delete car 
+CREATE TRIGGER delete_car
+AFTER DELETE ON VOITURE
+FOR EACH ROW
+BEGIN
+    DELETE FROM CONDUCTEUR
+    WHERE NUM_CONDUCTEUR = OLD.NUM_CONDUCTEUR;
+END$$
+
 -- Reset the delimiter to the default
 DELIMITER ;

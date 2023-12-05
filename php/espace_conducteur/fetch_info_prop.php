@@ -93,9 +93,9 @@ if (isset($_GET['num_etudiant']) && !empty($_GET['num_etudiant'])) {
                     $validation_status = $row['VALIDATION_ESCALE'];
                     $button_text = ($validation_status == 1) ? 'Cancel' : 'Confirm';
 
-                    echo '<td><form method="post" action="valider_resa.php">';
+                    echo '<td><form method="post" action="valider_escale.php">';
                     echo '<input type="hidden" name="num_passager" value="' . $row['NUM_ETUDIANT'] . '">';
-                    echo '<input type="hidden" name="num_trajet" value="' . $row['NUM_ESCALE'] . '">';
+                    echo '<input type="hidden" name="num_escale" value="' . $row['NUM_ESCALE'] . '">';
                     echo "<input type='submit' class='confirm-button' value='$button_text'></form></td>";
                 }
             }
