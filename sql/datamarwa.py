@@ -11,10 +11,10 @@ COULEUR= ['YELLOW', 'BLACK', 'WHITE', 'BLUE']
 NBR_PASSAGER = ['4', '5', '3']
 ETAT=['BON','MOYEN','MAUVAIS']
 
-NOM = ['SMITH', 'SNOW', 'TRIBIANI', 'GELLER', 'GREEN']
-PRENOM = ['Chandler', 'Joey', 'Rachel', 'Monica', 'Ross']
 
 ####################################      DATA ETUDIANT   ####################################
+NOM = ['SMITH', 'SNOW', 'TRIBIANI', 'GELLER', 'GREEN']
+PRENOM = ['Chandler', 'Joey', 'Rachel', 'Monica', 'Ross']
 
 def data_etudiant():
     L=[]

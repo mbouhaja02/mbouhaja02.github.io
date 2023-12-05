@@ -82,6 +82,72 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         margin-top: 50px;
     }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #statsContainer {
+        display: flex;
+        justify-content: center; /* Center blocks horizontally */
+        flex-wrap: wrap; /* Allow the blocks to wrap if necessary */
+        gap: 20px; /* Space between blocks */
+    }
+
+    .statBlock {
+        background-color: #333; /* Dark background */
+        color: white; /* White text */
+        padding: 20px;
+        border-radius: 5px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+        flex-basis: calc(33.333% - 40px); /* Take up one-third of the container width minus the gap */
+        display: flex; /* Use flex layout within each block */
+        flex-direction: column; /* Stack children vertically */
+        justify-content: center; /* Center content vertically */
+        align-items: center; /* Center content horizontally */
+        min-width: 250px; /* Minimum width of each stat block */
+        max-width: 300px; /* Maximum width of each stat block */
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        font-size: 18px;
+    }
+
+    td {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+    /* Optional: Animations for the stat blocks */
+    .statBlock {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.5s ease forwards;
+        animation-delay: 0.2s;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Staggered animation delays */
+    .statBlock:nth-child(1) { animation-delay: 0.2s; }
+    .statBlock:nth-child(2) { animation-delay: 0.4s; }
+    .statBlock:nth-child(3) { animation-delay: 0.6s; }
 </style>
 
 
@@ -146,6 +212,124 @@
         });
     </script>
 
-    <?php include('php/footer.php'); ?>
+<h1>  Les statistiques </h1>
+
+<div id="statsContainer">
+    <!-- Moyenne des passagers -->
+    <div class="statBlock">
+    <?php
+        include('connect.php');
+
+        $query = "SELECT  AVG(subquery.Distances_Jour) AS Moyenne_Distance_Jour
+        FROM (
+            SELECT t.DATE_DEPART, SUM(t.DISTANCE_TOTAL) AS Distances_Jour
+            FROM TRAJET t
+            GROUP BY t.DATE_DEPART
+        ) AS subquery;";
+        if ($result = $conn->query($query)) {
+            $row = $result->fetch_assoc();
+            echo '<table>';
+            echo '<tr><th>Moyenne de distance par jour</th></tr>';
+            echo '<tr>';
+            echo '<td>' . $row['Moyenne_Distance_Jour'] . '</td>';
+            echo '</tr>';
+            echo '</table>';
+        } else {
+            echo '<div id="result"><h3>Erreur :</h3>';
+            echo '<p>' . $conn->error . '</p>';
+            echo '</div>';
+        }
+        $conn->close();
+    ?>
+    </div>
+    
+    <!-- Moyenne des distances parcourues -->
+    <div class="statBlock">
+    <?php
+        include('connect.php');
+
+        $query = "SELECT AVG(p.NUM_PASSAGER) AS Moyenne_Passagers
+        FROM PASSAGER p
+        JOIN RESERVATION r ON r.NUM_PASSAGER = p.NUM_PASSAGER
+        -- Inclure les escales ?
+        WHERE VALIDATION_RESERVATION = 'TRUE';";
+        if ($result = $conn->query($query)) {
+            $row = $result->fetch_assoc();
+            echo '<table>';
+            echo '<tr><th>Moyenne des Passagers</th></tr>';
+            echo '<tr>';
+            echo '<td>' . $row['Moyenne_Passagers'] . '</td>';
+            echo '</tr>';
+            echo '</table>';
+        } else {
+            echo '<div id="result"><h3>Erreur :</h3>';
+            echo '<p>' . $conn->error . '</p>';
+            echo '</div>';
+        }
+        $conn->close();
+    ?>
+    </div>
+    
+    <!-- Classement des meilleurs conducteurs -->
+    <div class="statBlock">
+    <?php
+        include('connect.php');
+
+        $query = "SELECT e.NOM, e.PRENOM, eval.NOTE AS avis
+        FROM CONDUCTEUR c
+        JOIN ETUDIANT e ON c.NUM_CONDUCTEUR = e.NUM_ETUDIANT
+        JOIN EVALUATION eval ON eval.NUM_ETUDIANT_EVALUE = c.NUM_CONDUCTEUR
+        ORDER BY eval.note DESC;";
+
+        if ($result = $conn->query($query)) {
+            
+            echo '<table>';
+            echo '<tr> Le classement des conducteurs les mieux classées</tr>';
+            echo '<tr><th>Nom</th><th>Prénom</th><th>Avis</th></tr>';
+            while($row = $result->fetch_assoc()){
+                echo '<tr>';
+                echo '<td>' . $row['NOM'] . '</td>';
+                echo '<td>' . $row['PRENOM'] . '</td>';
+                echo '<td>' . $row['avis'] . '</td>';
+                echo '</tr>';
+        }
+        } else {
+            echo '<div id="result"><h3>Erreur :</h3>';
+            echo '<p>' . $conn->error . '</p>';
+            echo '</div>';
+        }
+        echo '</table>';
+        $conn->close();
+    ?>
+    </div>
+
+    <!-- Average Rating Given by Passagers -->
+<div class="statBlock">
+<?php
+    include('connect.php'); // Make sure your connection details are correct
+
+    $query = "SELECT AVG(NOTE) AS Average_Rating FROM EVALUATION;";
+    if ($result = $conn->query($query)) {
+        $row = $result->fetch_assoc();
+        echo '<table>';
+        echo '<tr><th>Moyenne des Avis des Passagers</th></tr>';
+        echo '<tr>';
+        echo '<td>' . number_format($row['Average_Rating'], 2) . '</td>'; // Format to 2 decimal places
+        echo '</tr>';
+        echo '</table>';
+    } else {
+        echo '<div id="result"><h3>Erreur :</h3>';
+        echo '<p>' . $conn->error . '</p>';
+        echo '</div>';
+    }
+    $conn->close();
+?>
+</div>
+
+</div>
+
+
+
+<?php include('php/footer.php'); ?>
 </body>
 </html>
