@@ -5,12 +5,15 @@
     <style>
         /* General Styling */
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 60px;
+            background-color: #f2f2f2; /* Fond légèrement gris */
             margin: 0;
+            color: #000000; /* Texte noir pour le contraste */
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full height */
         }
 
         /* Form Styling */
@@ -33,7 +36,7 @@
 
         .btn-primary {
             width: 100%; /* Full width button */
-            background-color: #007bff;
+            background-color: #333;
             color: white;
             padding: 10px;
             border: none;
@@ -42,7 +45,7 @@
         }
 
         .btn-primary:hover {
-            background-color: #0056b3;
+            background-color: #555;
         }
 
         .alert {
@@ -60,12 +63,6 @@
             background-color: #d4edda;
             color: #155724;
         }
-        .container{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
     </style>
 </head>
 <body>
@@ -73,32 +70,33 @@
     <?php include('header.php'); ?>
 
     <?php if (!isset($loggedUser)): ?>
-    <div id="container">
-    <form action="index.php" method="post">
-        <!-- Error Message -->
-        <?php if (isset($errorMessage)): ?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo $errorMessage; ?>
+    <div class="container">
+        <form action="index.php" method="post">
+            <!-- Error Message -->
+            <?php if (isset($errorMessage)): ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $errorMessage; ?>
+                </div>
+            <?php endif; ?>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" placeholder="you@example.com">
+                <div id="email-help" class="form-text">L'email utilisé lors de la création de compte.</div>
             </div>
-        <?php endif; ?>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" placeholder="you@example.com">
-            <div id="email-help" class="form-text">L'email utilisé lors de la création de compte.</div>
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label">Mot de passe</label>
-            <input type="password" class="form-control" id="password" name="password">
-        </div>
-        <button type="submit" class="btn btn-primary">Envoyer</button>
-    </form>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
+    </div>
     <?php else: ?>
         <!-- Success Message -->
         <div class="alert alert-success" role="alert">
             Bonjour <?php echo $loggedUser['email']; ?> et bienvenue sur le site !
         </div>
     <?php endif; ?>
-    </div>
+    
     <?php include('footer.php'); ?>
 </body>
 </html>
