@@ -168,24 +168,6 @@
         ?>
     </div>
 
-    <div class="row">
-        <div class="column">
-            <button class="button" id="reserver"><i class="fas fa-search"></i>reserver</button>
-        </div>
-        <div class="column">
-            <button class="button" id="proposer escale"><i class="fas fa-plus"></i>proposer escale</button>
-        </div>
-    </div>
-
-    <script>
-        document.getElementById('reserver').addEventListener('click', function() {
-            window.location.href = 'http://localhost/free-sgbd203/php/reservation.php';
-        });
-
-        document.getElementById('proposer escale').addEventListener('click', function() {
-            window.location.href = 'http://localhost/free-sgbd203/php/ajout_escale.php';
-        });
-    </script>
 
     <script>
         // Get today's date
