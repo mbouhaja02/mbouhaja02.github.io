@@ -61,15 +61,7 @@
     <?php include('../header.php'); ?>
 
     <div class="container">
-        <div class="sidebar">
-            <h2>Navigation</h2>
-            <ul>
-                <li><a href="info_vehicule.php">Mon véhicule</a></li>
-                <li><a href="mes_trajets.php">Mes trajets</a></li>
-                <li><a href="demandes_resa.php" >Demandes de réservations</a></li>
-                <li><a href="prop_escale.php" >Propositions d'escales</a></li>
-            </ul>
-        </div>
+        <?php include('nav_bar.php'); ?>
         <div class="main-content" id="mainContent">
             <!-- Your content related to managing cars and rides goes here -->
             <h2>Welcome to the Driver Space</h2>
