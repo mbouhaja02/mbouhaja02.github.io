@@ -90,7 +90,7 @@ if (isset($_GET['num_etudiant']) && !empty($_GET['num_etudiant'])) {
                     }
                 } else {
                     // Check the validation status and set button text accordingly
-                    $validation_status = $row['VALIDATION_RESERVATION'];
+                    $validation_status = $row['VALIDATION_ESCALE'];
                     $button_text = ($validation_status == 1) ? 'Cancel' : 'Confirm';
 
                     echo '<td><form method="post" action="valider_resa.php">';

@@ -28,7 +28,7 @@
                 <li><a href="info_vehicule.php">Mon véhicule</a></li>
                 <li><a href="#" onclick="showContent('Mes trajets à venir')">Mes trajets à venir</a></li>
                 <li><a href="demandes_resa.php" onclick="showContent('Demandes de réservations')">Demandes de réservations</a></li>
-                <li><a href="prop_escales.php" onclick="showContent('Propositions d\'escales')">Propositions d'escales</a></li>
+                <li><a href="prop_escale.php" onclick="showContent('Propositions d\'escales')">Propositions d'escales</a></li>
             </ul>
         </div>
         <div class="main-content" id="mainContent">
