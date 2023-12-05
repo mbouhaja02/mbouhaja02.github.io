@@ -8,8 +8,9 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding-top: 60px;
-            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
+            background-color: #f2f2f2; /* Fond légèrement gris */
             margin: 0;
+            color: #000000; /* Texte noir pour le contraste */
         }
 
         header {
@@ -43,7 +44,7 @@
         }
 
         button, input[type=submit] {
-            background: linear-gradient(to right, #2a5298, #1e3c72); /* Dégradé de bleu */
+            background: #333; 
             color: white;
             padding: 10px 20px;
             border: none;
@@ -51,6 +52,7 @@
             cursor: pointer;
             font-size: 16px;
             margin: 10px 0;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         .addTrajetForm {
@@ -81,7 +83,7 @@
         }
 
         .submit-button {
-            background-color: #4CAF50;
+            background-color: #333;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -89,10 +91,12 @@
             cursor: pointer;
             width: 100%;
             font-size: 1rem;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         .submit-button:hover {
-            background-color: #45a049;
+            background-color: #555;
+            transform: scale(1.05);
         }
 
         @media (max-width: 768px) {
