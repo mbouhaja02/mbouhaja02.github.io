@@ -4,23 +4,7 @@
     <title>Driver Space - Manage Car and Rides</title>
     <!-- Add your CSS or external stylesheet links here -->
     <link rel="stylesheet" type="text/css" href="../../css/esp_conducteur.css">
-    <style>
-        /* Add your custom CSS styles for table presentation */
-        table {
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../../css/table_style.css">
 </head>
 <body>
     <?php include('../header.php'); ?>

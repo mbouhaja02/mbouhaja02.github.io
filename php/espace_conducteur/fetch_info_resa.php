@@ -3,47 +3,8 @@
 <head>
     <title>Driver Space - Manage Car and Rides</title>
     <!-- Add your CSS or external stylesheet links here -->
-    <style>
-        /* Table styling */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        /* Button styling */
-        .confirm-button {
-            padding: 5px 10px;
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        .confirm-button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../../css/table_style.css">
 </head>
-<body>
-
-
-
 <?php
 include('../../connect.php');
 ini_set('display_errors', 1);

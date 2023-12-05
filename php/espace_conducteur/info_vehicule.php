@@ -4,6 +4,7 @@
     <title>Driver Space - Manage Car and Rides</title>
     <!-- Add your CSS or external stylesheet links here -->
     <link rel="stylesheet" type="text/css" href="../../css/esp_conducteur.css">
+    <link rel="stylesheet" type="text/css" href="../../css/table_style.css">
     <script>
         function fetchResultsFromDB() {
             var num_etudiant = document.getElementById('num_etudiant').value;
