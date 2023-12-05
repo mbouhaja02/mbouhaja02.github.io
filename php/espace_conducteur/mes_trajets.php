@@ -7,13 +7,15 @@
     <script>
         function fetchResultsFromDB() {
             var num_etudiant = document.getElementById('num_etudiant').value;
+            var order_by = document.getElementById('order_by').value; // Capture the selected order criteria
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState === 4 && this.status === 200) {
                     document.getElementById("results").innerHTML = this.responseText;
                 }
             };
-            xhttp.open("GET", "fetch_info_vehicule.php?num_etudiant=" + num_etudiant, true);
+            // Send both num_etudiant and order_by to the PHP script
+            xhttp.open("GET", "fetch_info_trajets.php?num_etudiant=" + num_etudiant + "&order_by=" + order_by, true);
             xhttp.send();
         }
     </script>
@@ -76,6 +78,15 @@
                 <div class="form-group">
                     <label for="num_etudiant">Student Number:</label>
                     <input type="text" id="num_etudiant" name="num_etudiant" placeholder="Enter your student number" required>
+                </div>
+                <div class="form-group">
+                    <label for="order_by">Order By:</label>
+                    <!-- Dropdown menu to select ordering criteria -->
+                    <select id="order_by" name="order_by">
+                        <option value="DATE_DEPART">Date</option>
+                        <option value="ADRESSE_ARRIVEE">Destination</option>
+                        <option value="CODE_POSTAL">Code Postal</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Submit">
