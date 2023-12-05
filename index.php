@@ -104,10 +104,10 @@
                     <button class="button" id="publishButton"><i class="fas fa-plus"></i>Publier un trajet</button>
                 </div>
                 <div class="column">
-                    <button class="button" id="rider"><i class="fas fa-plus"></i>Become a rider</button>
+                    <button class="button" id="driverSpace"><i class="fas fa-circle"></i>Mon Espace conducteur</button>
                 </div>
                 <div class="column">
-                    <button class="button" id="reservation"><i class="fas fa-plus"></i>Chi haja khra</button>
+                    <button class="button" id="reservation"><i class="fas fa-car"></i>Mon espace passager</button>
                 </div>
             </div>  
         </div>
@@ -137,8 +137,8 @@
             window.location.href = 'http://localhost/free-sgbd203/php/ajout_trajet.php';
         });
 
-        document.getElementById('rider').addEventListener('click', function() {
-            window.location.href = 'http://localhost/free-sgbd203/php/add_car.php';
+        document.getElementById('driverSpace').addEventListener('click', function() {
+            window.location.href = 'http://localhost/free-sgbd203/php/espace_conducteur/index_conducteur.php';
         });
         document.getElementById('reservation').addEventListener('click', function() {
             window.location.href = 'http://localhost/free-sgbd203/php/reservation.php';
